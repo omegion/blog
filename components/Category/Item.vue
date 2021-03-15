@@ -18,7 +18,7 @@
         <div class="media pt-5">
           <div class="media-content">
             <p class="is-size-5 has-text-weight-semibold">{{ item.name }}</p>
-            <p class="is-size-6">4 articles</p>
+            <p class="is-size-6">{{ articleCount }} articles</p>
           </div>
         </div>
       </div>
@@ -27,7 +27,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, useRoute } from "@nuxtjs/composition-api";
+import {
+  computed,
+  defineComponent,
+  ref,
+  useContext,
+  useFetch,
+  useRoute,
+} from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "CategoryItem",
@@ -39,12 +46,25 @@ export default defineComponent({
   },
   setup(props) {
     const route = useRoute();
+    const { $content } = useContext();
 
+    const articleCount = ref(0);
     const isActive = computed(() => {
       return route.value.query.category === props.item.slug;
     });
 
-    return { isActive };
+    const { fetch } = useFetch(async () => {
+      // @ts-ignore
+      const articles = await $content("articles")
+        .where({ category: props.item.slug })
+        .fetch();
+
+      articleCount.value = articles.length;
+    });
+
+    fetch();
+
+    return { isActive, articleCount };
   },
 });
 </script>

@@ -1,12 +1,9 @@
 ---
-date: 2018-09-27
 title: First 10 Days Report of Crawly
 author: hakan
 category: saas
 tags: [uptime,ssl,monitoring,saas]
 thumbnail: startup-launching.jpg
-headerImage: startup-launching.jpg
-published: true
 ---
 
 This is the first 10 days report of my 2nd SaaS Side Project Crawly.

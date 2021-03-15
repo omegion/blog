@@ -1,12 +1,10 @@
 ---
-date: 2020-07-10
 title: How to install ArgoCD on kubernetes cluster
-description: This is an article to explain how to install ArgoCD on kubernetes cluster. nstall ArgoCD on kubernetes cluster.
+description: This is an article to explain how to install ArgoCD on kubernetes cluster.
 author: hakan
 category: kubernetes
 tags: [kubernetes,argocd,argo,k8s,crawly,uptime,monitoring]
 thumbnail: startup-launching.jpg
-published: false
 ---
 
 ## Introduction
@@ -17,7 +15,6 @@ run your application on it. As these companies abstract the architecture layer f
 to maintain a cluster anymore, deployment of the application became the new main focus. There are many open-source 
 tools that help you to deploy your application on clusters. In my opinion, one of the famous ones is Argo CD. 
 In this tutorial, we will install Argo CD on a cluster, login to UI and deploy an application with it.
-
 
 ## What is Argo CD
 Argo CD is a lightweight and easy to configure declarative GitOps tool. It is built to deploy applications to

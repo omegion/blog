@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: blog
+  labels:
+    app: blog
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      imagePullSecrets:
+        - name: registry-secret
+      containers:
+        - name: blog
+          image: ghcr.io/omegion/blog:v0.1.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 80m
+              memory: 150Mi
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          ports:
+            - containerPort: 80
+          env:
+            - name: ENVIRONMENT
+              value: "production"
+  strategy:
+    canary:
+      maxSurge: "10%"
+      maxUnavailable: 0
+      steps:
+        - setWeight: 10
+        - pause: { }
