@@ -4,8 +4,8 @@
       <div
         class="large-post"
         v-lazy:background-image="{
-          src: require('@/assets/img/thumbnails/' + article.thumbnail),
-          loading: require('@/assets/img/thumbnails/' +
+          src: require('@/static/public/img/' + article.thumbnail),
+          loading: require('@/static/public/img/' +
             article.thumbnail +
             '?lqip'),
         }"
@@ -59,7 +59,7 @@ export default defineComponent({
       return {
         backgroundImage:
           "url(" +
-          require("@/assets/img/thumbnails/" + props.article.thumbnail) +
+          require("@/static/public/img/" + props.article.thumbnail) +
           ")",
       };
     });

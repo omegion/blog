@@ -116,6 +116,13 @@ const config: Configuration = {
     routes() {
       return getRoutes();
     },
+    defaults: {
+      changefreq: "daily",
+      priority: 1,
+      lastmod: new Date(),
+    },
+    gzip: true,
+    cacheTime: 1,
   },
 };
 
