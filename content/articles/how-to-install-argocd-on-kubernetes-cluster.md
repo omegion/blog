@@ -4,7 +4,7 @@ description: This is an article to explain how to install ArgoCD on kubernetes c
 author: hakan
 category: kubernetes
 tags: [kubernetes,argocd,argo,k8s,crawly,uptime,monitoring]
-thumbnail: startup-launching.jpg
+thumbnail: pexels-chanaka-906494.jpg
 ---
 
 ## Introduction
