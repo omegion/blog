@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/composition-api": "^0.22.1",
     "@nuxtjs/markdownit": "^2.0.0",
+    "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "buefy": "^0.9.4",
     "core-js": "^3.8.3",

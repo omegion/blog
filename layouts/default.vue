@@ -1,7 +1,6 @@
 <template>
   <div>
     <portal-target name="hero"></portal-target>
-
     <section class="">
       <Nuxt />
     </section>

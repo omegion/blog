@@ -38,7 +38,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { $content } = useContext();
+    const { $content, error } = useContext();
     const author = ref("");
     const avatar = ref("");
 
@@ -47,7 +47,7 @@ export default defineComponent({
       author.value = await $content("authors", props.slug)
         .fetch()
         .catch(() => {
-          console.error({ statusCode: 404, message: "Post not found" });
+          error({ statusCode: 404, message: "Page not found" });
         });
       // @ts-ignore
       avatar.value = require(`@/static/public/img/${author.value.avatar}`);

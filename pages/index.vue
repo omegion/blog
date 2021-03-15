@@ -33,7 +33,7 @@ export default defineComponent({
     title: "Blog | Omegion",
   },
   setup() {
-    const { $content, $config } = useContext();
+    const { $content, $config, error } = useContext();
     const route = useRoute();
 
     const articles = ref(null);
@@ -54,7 +54,9 @@ export default defineComponent({
       }
 
       // @ts-ignore
-      articles.value = await q.fetch();
+      articles.value = await q.fetch().catch(() => {
+        error({ statusCode: 404, message: "Page not found" });
+      });
     });
 
     const loadMore = () => {

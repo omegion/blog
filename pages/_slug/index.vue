@@ -20,15 +20,16 @@ export default defineComponent({
   head: {},
   setup() {
     const route = useRoute();
-    const { $content } = useContext();
+    const { $content, error } = useContext();
     const article = ref(null);
 
     const { fetch } = useFetch(async () => {
       // @ts-ignore
-      article.value = await $content(
-        "articles",
-        route.value.params.slug
-      ).fetch();
+      article.value = await $content("articles", route.value.params.slug)
+        .fetch()
+        .catch(() => {
+          error({ statusCode: 404, message: "Page not found" });
+        });
     });
 
     fetch();

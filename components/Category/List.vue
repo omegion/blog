@@ -29,12 +29,16 @@ export default defineComponent({
   name: "CategoryList",
   components: { CategoryItem },
   setup() {
-    const { $content } = useContext();
+    const { $content, error } = useContext();
     const categories = ref([]);
 
     const { fetch } = useFetch(async () => {
       // @ts-ignore
-      categories.value = await $content("categories").fetch();
+      categories.value = await $content("categories")
+        .fetch()
+        .catch(() => {
+          error({ statusCode: 404, message: "Page not found" });
+        });
     });
 
     fetch();

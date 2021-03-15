@@ -45,8 +45,9 @@ const config: Configuration = {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     "@nuxtjs/markdownit",
-    "@nuxt/content",
     "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    "@nuxt/content",
     "portal-vue/nuxt",
   ],
 
@@ -65,7 +66,23 @@ const config: Configuration = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: true,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true,
+        preserveLineBreaks: false,
+        collapseWhitespace: true,
+      },
+    },
+  },
 
   markdownit: {
     preset: "default",
