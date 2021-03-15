@@ -1,0 +1,64 @@
+<template>
+  <div class="card has-background">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img :src="thumbnail" alt="Placeholder image" />
+      </figure>
+    </div>
+    <div class="card-content">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="has-text-weight-semibold">
+              <nuxt-link
+                tag="a"
+                :to="{ name: 'index', query: { category: article.category } }"
+                class="is-size-7 has-text-hover-primary-dark is-capitalized"
+              >
+                {{ article.category }}
+              </nuxt-link>
+              <span class="ml-3 has-text-grey-light is-size-7"
+                >{{ article.updatedAt | formatDateMonth }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </nav>
+      <nuxt-link
+        tag="a"
+        :to="{ name: 'slug', params: { slug: article.slug } }"
+        class="title is-4"
+      >
+        {{ article.title }}
+      </nuxt-link>
+      <p class="pt-4">
+        {{ article.description }}
+      </p>
+      <br />
+      <Author :slug="article.author" />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent } from "@nuxtjs/composition-api";
+import Author from "~/components/List/Author.vue";
+
+export default defineComponent({
+  name: "ListItem",
+  components: { Author },
+  props: {
+    article: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const thumbnail = computed(() =>
+      require("@/static/public/img/" + props.article.thumbnail)
+    );
+
+    return { thumbnail };
+  },
+});
+</script>
