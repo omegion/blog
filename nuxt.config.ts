@@ -4,19 +4,8 @@ import getRoutes from "./utils/getRoutes";
 const VERSION = require("./package.json").version;
 
 const config: Configuration = {
-  ssr: false,
+  ssr: true,
   target: "static",
-
-  generate: {
-    async routes() {
-      const { $content } = require("@nuxt/content");
-      const files = await $content({ deep: true }).only(["path"]).fetch();
-
-      return files.map((file: any) =>
-        file.path === "/index" ? "/" : file.path
-      );
-    },
-  },
 
   head: {
     title: "Blog",
@@ -44,7 +33,7 @@ const config: Configuration = {
     { ssr: true, src: "@/plugins/buefy.ts" },
     { ssr: true, src: "@/plugins/filters.ts" },
     { ssr: true, src: "@/plugins/vue-lazyload.ts" },
-    { ssr: true, src: "@/plugins/vue-masonry.ts" },
+    { ssr: false, src: "@/plugins/vue-masonry.ts" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
