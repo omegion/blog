@@ -13,7 +13,7 @@ spec:
   tls:
     - hosts:
         - blog.omegion.dev
-      secretName: blog-cloudflare-tls
+      secretName: cloudflare-tls
   rules:
     - host: blog.omegion.dev
       http:
