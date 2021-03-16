@@ -19,7 +19,7 @@ spec:
         - name: registry-secret
       containers:
         - name: blog
-          image: ghcr.io/omegion/blog:v0.6.0
+          image: ghcr.io/omegion/blog:v0.7.0
           imagePullPolicy: Always
           resources:
             limits:
