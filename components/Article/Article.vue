@@ -31,7 +31,7 @@
         </div>
       </section>
     </portal>
-    <div class="article-body pt-6 content">
+    <div class="article-body pt-6 content has-text-justified">
       <nuxt-content :document="article" />
     </div>
     <tags v-if="article.tags" :tags="article.tags" class="pt-3" />

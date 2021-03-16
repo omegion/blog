@@ -3,7 +3,7 @@ title: How to install ArgoCD on kubernetes cluster
 description: This is an article to explain how to install ArgoCD on kubernetes cluster.
 author: hakan
 category: kubernetes
-tags: [kubernetes,argocd,argo,k8s,crawly,uptime,monitoring]
+tags: [kubernetes,argocd,argo,k8s]
 thumbnail: pexels-chanaka-906494.jpg
 ---
 

@@ -166,6 +166,9 @@ img[lazy="loading"] {
     font-size: inherit;
     display: inherit;
     background-color: inherit;
+    margin-right: inherit;
+    padding: inherit;
+    vertical-align: unset;
   }
 
   code {
@@ -219,4 +222,16 @@ img[lazy="loading"] {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.divider {
+  position: relative;
+
+  svg {
+    height: 6vw;
+  }
+}
+
+.flip-x {
+  transform: scaleX(-1);
 }
