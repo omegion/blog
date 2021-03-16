@@ -28,7 +28,6 @@
 
 <script lang="ts">
 import {
-  computed,
   defineComponent,
   ref,
   useContext,
@@ -49,14 +48,15 @@ export default defineComponent({
     const { $content } = useContext();
 
     const articleCount = ref(0);
-    const isActive = computed(() => {
+    const isActive = () => {
       return route.value.query.category === props.item.slug;
-    });
+    };
 
     const { fetch } = useFetch(async () => {
       // @ts-ignore
       const articles = await $content("articles")
         .where({ category: props.item.slug })
+        .only(["slug"])
         .fetch();
 
       articleCount.value = articles.length;

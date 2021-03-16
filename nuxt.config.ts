@@ -67,19 +67,11 @@ const config: Configuration = {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    publicPath: process.env.NODE_ENV === "production" ? "/public/" : "/_nuxt/",
     html: {
       minify: {
-        collapseBooleanAttributes: true,
-        decodeEntities: true,
         minifyCSS: true,
         minifyJS: true,
-        processConditionalComments: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-        trimCustomFragments: true,
-        useShortDoctype: true,
-        preserveLineBreaks: false,
-        collapseWhitespace: true,
       },
     },
   },
@@ -97,23 +89,16 @@ const config: Configuration = {
         "markdown-it-anchor",
         {
           level: 1,
-          // slugify: string => string,
           permalink: true,
-          // renderPermalink: (slug, opts, state, permalink) => {},
           permalinkClass: "header-anchor",
           permalinkSymbol: "¶",
         },
       ],
       "markdown-it-attrs",
-      // "markdown-it-toc-done-right",
-      // "markdown-it-emoji",
     ],
   },
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
-    dashboardLoginUrl: process.env.DASHBOARD_LOGIN_URL,
-    dashboardSignUpUrl: process.env.DASHBOARD_SIGNUP_URL,
-    documentationUrl: process.env.DOCUMENTATION_URL,
     titlePostfix: process.env.TITLE_POSTFIX,
     appVersion: VERSION,
   },
