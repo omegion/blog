@@ -17,7 +17,7 @@ Vue.filter("trim", (text: string, max: number) => {
 
 Vue.filter("formatDate", (value: string) => {
   if (value) {
-    return moment(String(value)).format("DD MMMM YYYY");
+    return moment(String(value)).format("Do MMMM YYYY");
   }
 });
 

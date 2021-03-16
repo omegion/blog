@@ -4,7 +4,7 @@
     <section class="">
       <Nuxt />
     </section>
-    <Footer />
+    <Footer class="mt-6" />
   </div>
 </template>
 

@@ -4,6 +4,7 @@ author: hakan
 category: saas
 tags: [uptime,ssl,monitoring,saas]
 thumbnail: startup-launching.jpg
+createdAt: 2020-05-16
 ---
 
 This is the first 10 days report of my 2nd SaaS Side Project Crawly.

@@ -57,7 +57,7 @@ import { computed, defineComponent } from "@nuxtjs/composition-api";
 import moment from "moment";
 
 export default defineComponent({
-  name: "Navbar",
+  name: "Footer",
   setup() {
     const dateYear = computed(() => moment().year());
     return { dateYear };

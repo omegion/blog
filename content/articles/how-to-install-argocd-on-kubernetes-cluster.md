@@ -5,6 +5,7 @@ author: hakan
 category: kubernetes
 tags: [kubernetes,argocd,argo,k8s]
 thumbnail: pexels-chanaka-906494.jpg
+createdAt: 2021-02-15
 ---
 
 ## Introduction

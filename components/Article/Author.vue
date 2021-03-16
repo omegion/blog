@@ -16,7 +16,7 @@
         {{ author.name }}
       </p>
       <p class="title has-text-grey-light is-size-7">
-        {{ updatedAt | formatDateMonth }}
+        {{ createdAt | formatDate }}
       </p>
     </div>
   </div>
@@ -37,7 +37,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    updatedAt: {
+    createdAt: {
       type: String,
       required: true,
     },

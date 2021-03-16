@@ -26,7 +26,7 @@
               </div>
             </nav>
             <p class="title is-size-2">{{ article.title }}</p>
-            <author :slug="article.author" :updated-at="article.updatedAt" />
+            <author :slug="article.author" :created-at="article.createdAt" />
           </div>
         </div>
       </section>

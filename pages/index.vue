@@ -45,7 +45,7 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       const q = $content("articles")
         .limit(currentPage.value * perPage.value)
-        .sortBy("updatedAt", "desc");
+        .sortBy("createdAt", "desc");
 
       if (categorySlug.value) {
         q.where({

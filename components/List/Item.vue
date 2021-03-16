@@ -22,7 +22,7 @@
                 {{ article.category }}
               </nuxt-link>
               <span class="ml-3 has-text-grey-light is-size-7"
-                >{{ article.updatedAt | formatDateMonth }}
+                >{{ article.createdAt | formatDate }}
               </span>
             </p>
           </div>
