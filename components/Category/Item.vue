@@ -6,7 +6,7 @@
       :class="[
         'card category-item notification',
         item.type,
-        { 'is-active': isActive },
+        { 'is-active': isActive() },
       ]"
     >
       <div class="card-content p-2">
@@ -46,8 +46,8 @@ export default defineComponent({
   setup(props) {
     const route = useRoute();
     const { $content } = useContext();
-
     const articleCount = ref(0);
+
     const isActive = () => {
       return route.value.query.category === props.item.slug;
     };
