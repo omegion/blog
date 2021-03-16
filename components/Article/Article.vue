@@ -2,8 +2,16 @@
   <section class="container section pt-2">
     <portal to="hero">
       <section class="hero is-primary-dark is-medium">
-        <div class="hero-background-image overlay">
-          <img :src="thumbnail" alt="Image" class="bg-image opacity-50" />
+        <div
+          class="hero-background-image overlay"
+          v-lazy-container="{ selector: 'img' }"
+        >
+          <img
+            :alt="article.title"
+            :data-src="thumbnail"
+            :data-loading="thumbnailSmall"
+            class="bg-image opacity-50"
+          />
         </div>
         <div class="hero-head">
           <navbar type="is-white" />
@@ -58,6 +66,9 @@ export default defineComponent({
     const thumbnail = computed(() =>
       require(`@/static/public/img/${props.article.thumbnail}`)
     );
+    const thumbnailSmall = computed(() =>
+      require(`@/static/public/img/${props.article.thumbnail}?lqip`)
+    );
 
     useMeta({
       title: `${props.article.title} - ${$config.titlePostfix}`,
@@ -98,7 +109,7 @@ export default defineComponent({
       ],
     });
 
-    return { thumbnail };
+    return { thumbnail, thumbnailSmall };
   },
 });
 </script>

@@ -1,8 +1,12 @@
 <template>
   <div class="card has-background">
     <div class="card-image">
-      <figure class="image is-4by3">
-        <img :src="thumbnail" alt="Placeholder image" />
+      <figure class="image is-4by3" v-lazy-container="{ selector: 'img' }">
+        <img
+          :alt="article.title"
+          :data-src="thumbnail"
+          :data-loading="thumbnailSmall"
+        />
       </figure>
     </div>
     <div class="card-content">
@@ -58,7 +62,11 @@ export default defineComponent({
       require("@/static/public/img/" + props.article.thumbnail)
     );
 
-    return { thumbnail };
+    const thumbnailSmall = computed(() =>
+      require(`@/static/public/img/${props.article.thumbnail}?lqip`)
+    );
+
+    return { thumbnail, thumbnailSmall };
   },
 });
 </script>

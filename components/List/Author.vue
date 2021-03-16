@@ -1,8 +1,13 @@
 <template>
   <div class="media">
     <div class="media-left mr-2">
-      <figure class="image is-32x32">
-        <img class="is-rounded" :src="avatar" :alt="author.name" />
+      <figure class="image is-32x32" v-lazy-container="{ selector: 'img' }">
+        <img
+          class="is-rounded"
+          :alt="author.name"
+          :data-src="avatar"
+          :data-loading="avatarSmall"
+        />
       </figure>
     </div>
     <div class="media-content pt-1 mt-1">
@@ -34,6 +39,7 @@ export default defineComponent({
     const { $content, error } = useContext();
     const author = ref("");
     const avatar = ref("");
+    const avatarSmall = ref("");
 
     const { fetch, fetchState } = useFetch(async () => {
       // @ts-ignore
@@ -44,11 +50,13 @@ export default defineComponent({
         });
       // @ts-ignore
       avatar.value = require(`@/static/public/img/${author.value.avatar}`);
+      // @ts-ignore
+      avatarSmall.value = require(`@/static/public/img/${author.value.avatar}?lqip`);
     });
 
     fetch();
 
-    return { author, fetchState, avatar };
+    return { author, fetchState, avatar, avatarSmall };
   },
 });
 </script>

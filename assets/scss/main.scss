@@ -9,7 +9,7 @@ a {
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        -webkit-transform: translateY(-3px);
+        -webkit-transform: transla§teY(-3px);
         transform: translateY(-3px);
       }
     }
@@ -150,6 +150,10 @@ a {
       }
     }
   }
+}
+
+img[lazy="loading"] {
+  filter: blur(15px);
 }
 
 .nuxt-content {
