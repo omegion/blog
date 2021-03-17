@@ -43,22 +43,26 @@ export default defineComponent({
     const categorySlug = computed(() => route.value.query.category);
 
     const { fetch } = useFetch(async () => {
+      const w = {};
       const q = $content("articles")
         .limit(currentPage.value * perPage.value)
-        .where({ isPublished: true })
         .sortBy("createdAt", "desc");
 
+      if ($config.isProduction) {
+        Object.assign(w, { isPublished: true });
+      }
+
       if (categorySlug.value) {
-        q.where({
-          category: categorySlug.value,
-          isPublished: true,
-        });
+        Object.assign(w, { category: categorySlug.value });
       }
 
       // @ts-ignore
-      articles.value = await q.fetch().catch(() => {
-        error({ statusCode: 404, message: "Page not found" });
-      });
+      articles.value = await q
+        .where(w)
+        .fetch()
+        .catch(() => {
+          error({ statusCode: 404, message: "Page not found" });
+        });
     });
 
     const loadMore = () => {

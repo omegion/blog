@@ -45,7 +45,7 @@ export default defineComponent({
   },
   setup(props) {
     const route = useRoute();
-    const { $content } = useContext();
+    const { $content, $config } = useContext();
     const articleCount = ref(0);
 
     const isActive = () => {
@@ -53,9 +53,15 @@ export default defineComponent({
     };
 
     const { fetch } = useFetch(async () => {
+      const w = { category: props.item.slug };
+
+      if ($config.isProduction) {
+        Object.assign(w, { isPublished: true });
+      }
+
       // @ts-ignore
       const articles = await $content("articles")
-        .where({ category: props.item.slug, isPublished: true })
+        .where(w)
         .only(["slug"])
         .fetch();
 

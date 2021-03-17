@@ -26,19 +26,12 @@ RUN npm rebuild node-sass
 RUN cd $APP_HOME && yarn run generate
 
 # production stage
-FROM node:slim as production-stage
+FROM nginx:stable-alpine
 
-ENV NODE_ENV=production
 ENV APP_HOME=/usr/src/app
 
-RUN mkdir -p $APP_HOME
+COPY --from=build-stage $APP_HOME/dist /usr/share/nginx/html
 
-COPY --from=build-stage $APP_HOME $APP_HOME
+EXPOSE 80
 
-WORKDIR $APP_HOME
-
-ENV HOST 0.0.0.0
-
-EXPOSE 3000
-
-CMD ["yarn", "start"]
+CMD ["nginx", "-g", "daemon off;"]

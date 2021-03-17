@@ -8,7 +8,7 @@ cut-tag:
 
 .PHONY: release
 release: build-for-container
-	@echo "Releasing $(GIT_VERSION)"
-	docker build -t blog . --build-arg VERSION=$(GIT_VERSION)
-	docker tag blog:latest omegion/blog:$(GIT_VERSION)
-	docker push omegion/blog:$(GIT_VERSION)
+	@echo "Releasing $(version)"
+	docker build -t blog .
+	docker tag blog:latest omegion/blog:$(version)
+	docker push omegion/blog:$(version)

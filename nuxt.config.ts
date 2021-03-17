@@ -104,6 +104,7 @@ const config: Configuration = {
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
     titlePostfix: process.env.TITLE_POSTFIX,
+    isProduction: process.env.NODE_ENV === "production",
     appVersion: VERSION,
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID,

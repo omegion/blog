@@ -35,6 +35,9 @@
       >
         {{ article.title }}
       </nuxt-link>
+      <p v-if="!article.isPublished" class="pt-4">
+        <b-tag type="is-danger" class="has-text-weight-semibold">Draft</b-tag>
+      </p>
       <p class="pt-4">
         {{ article.description }}
       </p>
