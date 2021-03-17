@@ -1,7 +1,7 @@
 <template>
   <b-navbar :type="type" wrapper-class="container section py-0">
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
         <p class="title is-size-2 logo">Om.</p>
       </b-navbar-item>
     </template>

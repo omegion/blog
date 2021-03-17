@@ -4,6 +4,7 @@ author: hakan
 category: saas
 tags: [uptime,ssl,monitoring,saas]
 thumbnail: startup-launching.jpg
+isPublished: true
 createdAt: 2020-05-16
 ---
 

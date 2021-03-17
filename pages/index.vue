@@ -45,11 +45,13 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       const q = $content("articles")
         .limit(currentPage.value * perPage.value)
+        .where({ isPublished: true })
         .sortBy("createdAt", "desc");
 
       if (categorySlug.value) {
         q.where({
           category: categorySlug.value,
+          isPublished: true,
         });
       }
 

@@ -55,7 +55,7 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       // @ts-ignore
       const articles = await $content("articles")
-        .where({ category: props.item.slug })
+        .where({ category: props.item.slug, isPublished: true })
         .only(["slug"])
         .fetch();
 

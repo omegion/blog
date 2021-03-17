@@ -27,6 +27,9 @@
         <item :article="article" />
       </div>
     </div>
+    <div v-if="articles.length == 0">
+      <p class="title has-text-black">No articles found.</p>
+    </div>
   </section>
 </template>
 

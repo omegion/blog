@@ -40,7 +40,11 @@ const config: Configuration = {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
+  buildModules: [
+    "@nuxt/typescript-build",
+    "@nuxtjs/composition-api",
+    "@nuxtjs/google-analytics",
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -101,6 +105,9 @@ const config: Configuration = {
     baseUrl: process.env.BASE_URL,
     titlePostfix: process.env.TITLE_POSTFIX,
     appVersion: VERSION,
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID,
+    },
   },
   sitemap: {
     hostname: process.env.BASE_URL,
@@ -114,6 +121,9 @@ const config: Configuration = {
     },
     gzip: true,
     cacheTime: 1,
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
   },
 };
 
