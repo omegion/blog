@@ -34,7 +34,9 @@ export default defineComponent({
 
     const { fetch } = useFetch(async () => {
       // @ts-ignore
-      categories.value = await $content("categories").fetch();
+      categories.value = await $content("categories")
+        .sortBy("order", "asc")
+        .fetch();
     });
 
     fetch();

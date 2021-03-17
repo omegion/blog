@@ -24,7 +24,8 @@
         v-masonry-tile
         class="column is-4 item"
       >
-        <item :article="article" />
+        <link-item v-if="article.category === 'link'" :article="article" />
+        <item v-else :article="article" />
       </div>
     </div>
     <div v-if="articles.length == 0">
@@ -41,10 +42,11 @@ import {
   useRouter,
 } from "@nuxtjs/composition-api";
 import Item from "~/components/List/Item.vue";
+import LinkItem from "~/components/List/LinkItem.vue";
 
 export default defineComponent({
   name: "List",
-  components: { Item },
+  components: { Item, LinkItem },
   props: {
     articles: {
       type: Array,

@@ -12,7 +12,7 @@
     </div>
     <div class="media-content pt-1 mt-1">
       <p class="title is-size-7">
-        <span class="has-text-grey">by</span>
+        <span class="is-opacity-6">by</span>
         {{ author.name }}
       </p>
     </div>

@@ -10,7 +10,6 @@
             :alt="article.title"
             :data-src="thumbnail"
             :data-loading="thumbnailSmall"
-            class="bg-image opacity-50"
           />
         </div>
         <div class="hero-head">

@@ -12,10 +12,10 @@
     </div>
     <div class="media-content mt-1">
       <p class="title is-size-6 mb-2">
-        <span class="has-text-weight-normal has-text-grey-light">by</span>
+        <span class="has-text-weight-normal is-opacity-6">by</span>
         {{ author.name }}
       </p>
-      <p class="title has-text-grey-light is-size-7">
+      <p class="title is-opacity-6 is-size-7">
         {{ createdAt | formatDate }}
       </p>
     </div>

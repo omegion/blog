@@ -1,5 +1,6 @@
 {
   "name": "Kubernetes",
   "type": "is-primary-dark",
-  "icon": "kubernetes"
+  "icon": "kubernetes",
+  "order": 1
 }

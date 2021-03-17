@@ -1,13 +1,15 @@
 <template>
   <div class="card has-background">
     <div class="card-image">
-      <figure class="image is-4by3" v-lazy-container="{ selector: 'img' }">
-        <img
-          :alt="article.title"
-          :data-src="thumbnail"
-          :data-loading="thumbnailSmall"
-        />
-      </figure>
+      <nuxt-link tag="a" :to="{ name: 'slug', params: { slug: article.slug } }">
+        <figure class="image is-4by3" v-lazy-container="{ selector: 'img' }">
+          <img
+            :alt="article.title"
+            :data-src="thumbnail"
+            :data-loading="thumbnailSmall"
+          />
+        </figure>
+      </nuxt-link>
     </div>
     <div class="card-content">
       <nav class="level">
@@ -21,7 +23,7 @@
               >
                 {{ article.category }}
               </nuxt-link>
-              <span class="ml-3 has-text-grey-light is-size-7"
+              <span class="ml-3 is-opacity-6 is-size-7"
                 >{{ article.createdAt | formatDateMonthYear }}
               </span>
             </p>
