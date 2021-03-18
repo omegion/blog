@@ -16,6 +16,7 @@
     <div
       v-masonry
       item-selector=".item"
+      transition-duration="0s"
       class="columns is-multiline article-list"
     >
       <div
@@ -23,9 +24,11 @@
         :key="index"
         v-masonry-tile
         class="column is-4 item"
+        data-aos="fade-up"
+        :data-aos-delay="100 * index"
       >
         <link-item v-if="article.category === 'link'" :article="article" />
-        <item v-else :article="article" />
+        <item v-else :article="article" data-aos="fade-up" />
       </div>
     </div>
     <div v-if="articles.length == 0">

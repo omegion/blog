@@ -5,11 +5,8 @@ a {
 .article-list {
   .item {
     .card {
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      transition: all 0.2s ease-in-out;
-
       &:hover {
-        -webkit-transform: transla§teY(-3px);
+        -webkit-transform: translateY(-3px);
         transform: translateY(-3px);
       }
     }
@@ -241,4 +238,68 @@ img[lazy="loading"] {
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
+}
+
+// Carousel
+.carousel-list {
+  &.has-shadow {
+    box-shadow: unset;
+  }
+
+  .carousel-arrow {
+    .icon {
+      transition: opacity 0.2s linear, box-shadow 0.2s linear;
+
+      &:hover {
+        box-shadow: 0 0.1rem 0.225rem rgba(0, 0, 0, 0.1);
+      }
+
+      &.has-icons-right {
+        right: 0;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+      }
+
+      &.has-icons-left {
+        left: 0;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+      }
+
+      &.is-medium {
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
+}
+
+// Card
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: all 0.2s ease-in-out;
+
+  &.is-horizontal {
+    display: flex;
+
+    .card-image {
+      width: 50%;
+      height: 100%;
+    }
+
+    .card-stacked {
+      flex-direction: column;
+      flex: 1 1 auto;
+      display: flex;
+      position: relative;
+
+      .card-content {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  .card-image {
+    img {
+      object-fit: cover;
+    }
+  }
 }

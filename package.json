@@ -20,6 +20,7 @@
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
+    "aos": "^2.3.4",
     "buefy": "^0.9.4",
     "core-js": "^3.8.3",
     "markdown-it": "^12.0.4",

@@ -1,16 +1,21 @@
 <template>
   <section class="hero is-primary-light">
     <div class="hero-body">
-      <div class="container section is-small">
+      <div class="container is-fullhd section is-small">
         <h1 class="title is-size-3 has-text-black pb-2">Browse Categories</h1>
-        <div class="category-list columns">
-          <category-item
-            v-for="(category, index) in categories"
-            :key="index"
-            :item="category"
-            class="column is-3"
-          />
-        </div>
+        <b-carousel-list
+          v-model="currentCarousel"
+          :data="categories"
+          :items-to-show="4"
+          :has-opacity="false"
+          :arrow-hover="false"
+          icon-size="is-medium"
+          class="category-list columns"
+        >
+          <template #item="category">
+            <category-item :item="category" class="column" />
+          </template>
+        </b-carousel-list>
       </div>
     </div>
   </section>
@@ -30,6 +35,7 @@ export default defineComponent({
   components: { CategoryItem },
   setup() {
     const { $content } = useContext();
+    const currentCarousel = ref(0);
     const categories = ref([]);
 
     const { fetch } = useFetch(async () => {
@@ -41,7 +47,7 @@ export default defineComponent({
 
     fetch();
 
-    return { categories };
+    return { categories, currentCarousel };
   },
 });
 </script>

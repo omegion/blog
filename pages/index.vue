@@ -1,9 +1,7 @@
 <template>
   <section>
     <category-list />
-    <div v-if="articles">
-      <list :articles="articles" />
-    </div>
+    <list v-if="articles" :articles="articles" />
     <div class="section has-text-centered">
       <b-button @click="loadMore">Load More</b-button>
     </div>

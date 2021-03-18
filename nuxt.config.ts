@@ -34,6 +34,7 @@ const config: Configuration = {
     { ssr: true, src: "@/plugins/filters.ts" },
     { ssr: true, src: "@/plugins/vue-lazyload.ts" },
     { ssr: false, src: "@/plugins/vue-masonry.ts" },
+    { ssr: false, src: "@/plugins/vue-aos.js" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
