@@ -1,7 +1,7 @@
 <template>
   <section class="hero is-primary-light">
     <div class="hero-body">
-      <div class="container is-fullhd section is-small">
+      <div class="container section is-small">
         <h1 class="title is-size-3 has-text-black pb-2">Browse Categories</h1>
         <b-carousel-list
           v-model="currentCarousel"

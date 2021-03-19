@@ -1,9 +1,6 @@
 <template>
   <section>
     <category-list />
-    <div class="is-relative pt-4">
-      <divider />
-    </div>
     <list v-if="articles" :articles="articles" />
     <div class="section has-text-centered">
       <b-button @click="loadMore">Load More</b-button>
@@ -24,13 +21,12 @@ import {
 } from "@nuxtjs/composition-api";
 import List from "~/components/List/List.vue";
 import CategoryList from "~/components/Category/List.vue";
-import Divider from "~/components/Divider.vue";
 
 const PER_PAGE = 10;
 
 export default defineComponent({
   name: "Index",
-  components: { Divider, CategoryList, List },
+  components: { CategoryList, List },
   head: {
     title: "Blog | Omegion",
   },

@@ -10,7 +10,9 @@
             <li
               v-for="(el, index) in items"
               :key="index"
-              :class="{ 'is-active': index === items.length - 1 }"
+              :class="{
+                'is-active': index === items.length - 1 && disableLastItem,
+              }"
             >
               <nuxt-link
                 tag="a"
@@ -43,6 +45,10 @@ export default defineComponent({
     type: {
       type: String,
       default: "is-white",
+    },
+    disableLastItem: {
+      type: Boolean,
+      default: true,
     },
   },
   setup(props) {

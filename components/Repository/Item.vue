@@ -13,7 +13,7 @@
     <div class="pt-3">
       <table class="table">
         <tbody>
-          <tr>
+          <tr v-if="repository.languages.nodes.length > 0">
             <td class="has-text-weight-semibold">Languages</td>
             <td>
               <b-tag
@@ -24,7 +24,7 @@
               </b-tag>
             </td>
           </tr>
-          <tr>
+          <tr v-if="repository.repositoryTopics.nodes.length > 0">
             <td class="has-text-weight-semibold">Topics</td>
             <td>
               <b-tag

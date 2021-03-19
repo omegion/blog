@@ -21,7 +21,7 @@
             <nav class="level">
               <div class="level-left">
                 <div class="level-item">
-                  <breadcrumb :article="article" />
+                  <breadcrumb :items="breadcrumbs" :disable-last-item="false" />
                 </div>
               </div>
             </nav>
@@ -42,11 +42,12 @@
 import {
   computed,
   defineComponent,
+  ref,
   useContext,
   useMeta,
 } from "@nuxtjs/composition-api";
 import Navbar from "~/components/Navbar.vue";
-import Breadcrumb from "~/components/Article/Breadcrumbs.vue";
+import Breadcrumb from "~/components/Breadcrumbs.vue";
 import Author from "~/components/Article/Author.vue";
 import Tags from "~/components/Article/Tags.vue";
 
@@ -62,7 +63,16 @@ export default defineComponent({
   head: {},
   setup(props) {
     const { $config } = useContext();
-
+    const breadcrumbs = ref([
+      {
+        route: { name: "index" },
+        name: "Blog",
+      },
+      {
+        route: { name: "index", query: { category: props.article.category } },
+        name: props.article.category,
+      },
+    ]);
     const thumbnail = computed(() =>
       require(`@/static/public/img/${props.article.thumbnail}`)
     );
@@ -109,7 +119,7 @@ export default defineComponent({
       ],
     });
 
-    return { thumbnail, thumbnailSmall };
+    return { thumbnail, thumbnailSmall, breadcrumbs };
   },
 });
 </script>
