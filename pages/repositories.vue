@@ -50,12 +50,11 @@ import {
 import Navbar from "~/components/Navbar.vue";
 import List from "~/components/Repository/List.vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
-import Divider from "~/components/Divider.vue";
 import ListPlaceholder from "~/components/Repository/ListPlaceholder.vue";
 
 export default defineComponent({
   name: "Index",
-  components: { ListPlaceholder, Navbar, List, Breadcrumbs, Divider },
+  components: { ListPlaceholder, Navbar, List, Breadcrumbs },
   head: {
     title: "Blog | Omegion",
   },
