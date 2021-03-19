@@ -1,5 +1,9 @@
 <template>
-  <b-navbar :type="type" wrapper-class="container section py-0">
+  <b-navbar
+    :type="type"
+    :shadow="shadow"
+    wrapper-class="container section py-0"
+  >
     <template #brand>
       <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
         <p class="title is-size-2 logo">Om.</p>
@@ -10,6 +14,9 @@
     <template #end>
       <b-navbar-item tag="nuxt-link" :to="{ name: 'index' }">
         Home
+      </b-navbar-item>
+      <b-navbar-item tag="nuxt-link" :to="{ name: 'repositories' }">
+        Open Source
       </b-navbar-item>
     </template>
   </b-navbar>
@@ -24,6 +31,10 @@ export default defineComponent({
     type: {
       type: String,
       default: "is-primary-dark",
+    },
+    shadow: {
+      type: Boolean,
+      default: false,
     },
   },
 });

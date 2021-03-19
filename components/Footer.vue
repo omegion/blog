@@ -23,6 +23,14 @@
             >
           </p>
           <p class="pb-2">
+            <nuxt-link
+              tag="a"
+              :to="{ name: 'repositories' }"
+              class="has-text-grey-light has-text-hover-white"
+              >Open Source
+            </nuxt-link>
+          </p>
+          <p class="pb-2">
             <a
               href="https://github.com/omegion"
               class="has-text-grey-light has-text-hover-white"

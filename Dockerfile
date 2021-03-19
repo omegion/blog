@@ -13,25 +13,40 @@ RUN apk update --no-cache \
 
 RUN mkdir -p $APP_HOME
 
-COPY ./package*.json $APP_HOME/
-
-RUN cd $APP_HOME && yarn install --production
-
 COPY . $APP_HOME
 COPY ./.env.production $APP_HOME/.env
 
-WORKDIR $APP_HOME
+RUN cd $APP_HOME && yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
 
-RUN npm rebuild node-sass
-RUN cd $APP_HOME && yarn run generate
+RUN cd $APP_HOME && npm rebuild node-sass
+RUN cd $APP_HOME && yarn run build
+
+RUN cd $APP_HOME && rm -rf node_modules && \
+  NODE_ENV=production yarn install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
 
 # production stage
-FROM nginx:stable-alpine
+FROM node:slim as production-stage
 
+ENV NODE_ENV=production
 ENV APP_HOME=/usr/src/app
 
-COPY --from=build-stage $APP_HOME/dist /usr/share/nginx/html
+RUN mkdir -p $APP_HOME
+
+COPY --from=build-stage $APP_HOME $APP_HOME
+
+WORKDIR $APP_HOME
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=80
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["yarn", "start"]
