@@ -14,13 +14,28 @@ spec:
     metadata:
       labels:
         app: blog
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "omegion"
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/agent-inject-secret-github: "github/token"
+        vault.hashicorp.com/agent-inject-template-github: |
+          {{ with secret "github/token" -}}
+            export GITHUB_TOKEN="{{ .Data.data.omegion_blog }}"
+          {{- end }}
     spec:
+      serviceAccountName: vault-auth
       imagePullSecrets:
         - name: registry-secret
       containers:
         - name: blog
-          image: ghcr.io/omegion/blog:v0.13.0
+          image: ghcr.io/omegion/blog:v0.14.0
           imagePullPolicy: Always
+          command: [ "/bin/ash", "-c" ]
+          args:
+            - >-
+              source /vault/secrets/github;
+              yarn start
           resources:
             limits:
               cpu: 150m
