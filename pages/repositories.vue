@@ -27,18 +27,7 @@
     <section class="container section is-small pl-0">
       <div class="columns">
         <div class="column is-8">
-          <section
-            v-if="fetchState.pending"
-            class="hero is-white is-large is-halfheight"
-          >
-            <div class="hero-body">
-              <b-loading
-                v-model="fetchState.pending"
-                :is-full-page="false"
-                :can-cancel="true"
-              ></b-loading>
-            </div>
-          </section>
+          <list-placeholder v-if="fetchState.pending" />
           <list v-else :repositories="repositories" />
         </div>
         <div class="column is-4 pl-0">
@@ -62,10 +51,11 @@ import Navbar from "~/components/Navbar.vue";
 import List from "~/components/Repository/List.vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
 import Divider from "~/components/Divider.vue";
+import ListPlaceholder from "~/components/Repository/ListPlaceholder.vue";
 
 export default defineComponent({
   name: "Index",
-  components: { Navbar, List, Breadcrumbs, Divider },
+  components: { ListPlaceholder, Navbar, List, Breadcrumbs, Divider },
   head: {
     title: "Blog | Omegion",
   },

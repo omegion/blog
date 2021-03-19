@@ -8,7 +8,6 @@
         >{{ repository.name }}</a
       >
     </p>
-
     <p class="">{{ repository.description }}</p>
     <div class="pt-3">
       <table class="table">

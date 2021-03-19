@@ -3,7 +3,7 @@
     <Article
       v-if="!fetchState.pending"
       :article="article"
-      class="column is-8"
+      class="container section column is-6"
     />
   </div>
 </template>

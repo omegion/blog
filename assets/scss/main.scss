@@ -150,7 +150,6 @@ a {
     &.is-active {
       a {
         opacity: 0.55;
-        //color: $grey !important;
       }
     }
   }
@@ -262,7 +261,6 @@ img[lazy="loading"] {
 .nuxt-content {
   .nuxt-content-highlight pre {
     border-radius: $radius;
-    background: $primary-light;
   }
 
   .number {
@@ -286,9 +284,20 @@ img[lazy="loading"] {
   h2,
   h3,
   h4 {
-    a .icon {
-      height: unset;
-      width: unset;
+    a {
+      opacity: 0;
+      transition: opacity 0.2s linear;
+
+      .mdi {
+        position: absolute;
+        left: -0.3em;
+      }
+    }
+
+    &:hover {
+      a {
+        opacity: 1;
+      }
     }
   }
 }

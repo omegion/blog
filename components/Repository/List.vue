@@ -1,8 +1,8 @@
 <template>
   <b-table
     :data="repositories"
-    :selected.sync="selected"
     :mobile-cards="false"
+    :row-class="(row, index) => currentItemSlug === row.name && 'is-selected'"
     class="repository-list"
   >
     <b-table-column field="name" label="Name" v-slot="props">
@@ -69,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@nuxtjs/composition-api";
+import { computed, defineComponent, useRoute } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "List",
@@ -81,7 +81,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const selected = ref(null);
+    const route = useRoute();
+
+    const currentItemSlug = computed(() => route.value.params.slug);
 
     const getFirstLanguageName = (languages: any) => {
       if (languages.length) {
@@ -96,7 +98,11 @@ export default defineComponent({
       return "";
     };
 
-    return { getFirstLanguageName, getFirstLanguageColor, selected };
+    return {
+      getFirstLanguageName,
+      getFirstLanguageColor,
+      currentItemSlug,
+    };
   },
 });
 </script>

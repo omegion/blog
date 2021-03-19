@@ -61,6 +61,52 @@ const config: Configuration = {
     "portal-vue/nuxt",
   ],
 
+  content: {
+    liveEdit: false,
+    markdown: {
+      prism: {
+        theme: "prism-themes/themes/prism-material-oceanic.css",
+      },
+      remarkPlugins: [
+        "remark-squeeze-paragraphs",
+        "remark-slug",
+        [
+          "remark-autolink-headings",
+          {
+            content: {
+              type: "element",
+              tagName: "span",
+              properties: {
+                className: ["mdi", "mdi-link-variant", "mdi-24px"],
+              },
+            },
+          },
+        ],
+        "remark-external-links",
+        "remark-footnotes",
+      ],
+      rehypePlugins: [
+        "rehype-sort-attribute-values",
+        "rehype-sort-attributes",
+        "rehype-raw",
+      ],
+    },
+  },
+
+  hooks: {
+    "content:file:beforeInsert": (document: {
+      extension: string;
+      text: any;
+      readingTime: any;
+    }) => {
+      if (document.extension === ".md") {
+        const { time } = require("reading-time")(document.text);
+
+        document.readingTime = time;
+      }
+    },
+  },
+
   serverMiddleware: ["./server-middleware/repositories"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -78,27 +124,6 @@ const config: Configuration = {
     browserBaseURL: "/",
   },
 
-  markdownit: {
-    preset: "default",
-    linkify: true,
-    breaks: true,
-    typographer: true,
-    html: true,
-    use: [
-      "markdown-it-highlightjs",
-      "markdown-it-link-attributes",
-      [
-        "markdown-it-anchor",
-        {
-          level: 1,
-          permalink: true,
-          permalinkClass: "header-anchor",
-          permalinkSymbol: "¶",
-        },
-      ],
-      "markdown-it-attrs",
-    ],
-  },
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
     titlePostfix: process.env.TITLE_POSTFIX,

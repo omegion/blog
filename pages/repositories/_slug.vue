@@ -1,15 +1,7 @@
 <template>
   <div class="card repository-details">
     <div class="card-content">
-      <div v-if="fetchState.pending">
-        <b-notification type="is-white" class="p-6" :closable="false">
-          <b-loading
-            :is-full-page="false"
-            v-model="fetchState.pending"
-            :can-cancel="true"
-          ></b-loading>
-        </b-notification>
-      </div>
+      <item-placeholder v-if="fetchState.pending" />
       <item v-else :repository="repository" />
     </div>
   </div>
@@ -26,10 +18,11 @@ import {
 } from "@nuxtjs/composition-api";
 
 import Item from "~/components/Repository/Item.vue";
+import ItemPlaceholder from "~/components/Repository/ItemPlaceholder.vue";
 
 export default defineComponent({
   name: "Index",
-  components: { Item },
+  components: { ItemPlaceholder, Item },
   head: {},
   setup() {
     const route = useRoute();

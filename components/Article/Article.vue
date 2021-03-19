@@ -1,7 +1,7 @@
 <template>
-  <section class="container section pt-2">
+  <section class="pt-2">
     <portal to="hero">
-      <section class="hero is-primary-dark is-medium">
+      <section class="hero is-primary-dark">
         <div
           class="hero-background-image overlay"
           v-lazy-container="{ selector: 'img' }"
@@ -16,8 +16,8 @@
         <div class="hero-head">
           <navbar type="is-white" />
         </div>
-        <div class="hero-body columns">
-          <div class="container column is-9">
+        <div class="hero-body px-0 columns">
+          <div class="container section column is-6">
             <nav class="level">
               <div class="level-left">
                 <div class="level-item">
@@ -26,7 +26,11 @@
               </div>
             </nav>
             <p class="title is-size-2">{{ article.title }}</p>
-            <author :slug="article.author" :created-at="article.createdAt" />
+            <author
+              :slug="article.author"
+              :created-at="article.createdAt"
+              :reading-time="article.readingTime"
+            />
           </div>
         </div>
       </section>

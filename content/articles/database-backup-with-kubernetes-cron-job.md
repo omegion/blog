@@ -30,7 +30,7 @@ perfect fit for creating a database backup for your self-manage database.
 
 ## Create CronJob
 
-Let's create `backup-cronjob.yaml` with given content.
+Let's create `backup-cronjob.yaml` with the given content.
 
 ```yaml
 apiVersion: batch/v1beta1
@@ -97,7 +97,7 @@ database-backup-job   0 0 * * *   False     0        <none>          27s
 
 ### Test CronJob
 
-The CronJob that we created will be executed every day. So, lets create a
+The CronJob that we created will be executed every day. So, let's create a
 temporary job from the CronJob that we can test our Job.
 
 ```shell
@@ -106,5 +106,5 @@ kubectl create job --from=cronjob/database-backup-job database-backup-job-manual
 
 ## Conclusion
 
-In this tutorial we created a CronJob to create database backups for our
+In this tutorial, we created a CronJob to create database backups for our
 self-managed database.
