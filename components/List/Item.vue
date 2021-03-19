@@ -2,7 +2,7 @@
   <div class="card has-background">
     <div class="card-image">
       <nuxt-link tag="a" :to="{ name: 'slug', params: { slug: article.slug } }">
-        <figure class="image is-4by3" v-lazy-container="{ selector: 'img' }">
+        <figure v-lazy-container="{ selector: 'img' }" class="image is-4by3">
           <img
             :alt="article.title"
             :src="thumbnail"

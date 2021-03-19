@@ -55,9 +55,6 @@ import ListPlaceholder from "~/components/Repository/ListPlaceholder.vue";
 export default defineComponent({
   name: "Index",
   components: { ListPlaceholder, Navbar, List, Breadcrumbs },
-  head: {
-    title: "Blog | Omegion",
-  },
   setup() {
     const { $config, error, $axios } = useContext();
     const router = useRouter();
@@ -113,6 +110,9 @@ export default defineComponent({
     fetch();
 
     return { repositories, breadcrumbs, fetchState };
+  },
+  head: {
+    title: "Blog | Omegion",
   },
 });
 </script>

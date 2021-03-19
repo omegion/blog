@@ -1,7 +1,7 @@
 <template>
   <div class="media">
     <div class="media-left mr-2">
-      <figure class="image is-32x32" v-lazy-container="{ selector: 'img' }">
+      <figure v-lazy-container="{ selector: 'img' }" class="image is-32x32">
         <img
           class="is-rounded"
           :alt="author.name"

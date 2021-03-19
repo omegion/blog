@@ -27,6 +27,7 @@ import Navbar from "~/components/Navbar.vue";
 
 export default defineComponent({
   components: { Navbar },
+  // eslint-disable-next-line vue/require-prop-types
   props: ["error"],
 });
 </script>

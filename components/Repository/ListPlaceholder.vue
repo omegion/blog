@@ -5,7 +5,7 @@
     :mobile-cards="false"
     class="repository-list"
   >
-    <b-table-column field="name" label="Name" v-slot="props">
+    <b-table-column field="name" label="Name">
       <div class="card">
         <div class="card-content">
           <div class="media">

@@ -3,8 +3,8 @@
     <portal to="hero">
       <section class="hero is-primary-dark">
         <div
-          class="hero-background-image overlay"
           v-lazy-container="{ selector: 'img' }"
+          class="hero-background-image overlay"
         >
           <img
             :alt="article.title"
@@ -64,7 +64,6 @@ export default defineComponent({
       required: true,
     },
   },
-  head: {},
   setup(props) {
     const { $config } = useContext();
     const breadcrumbs = ref([
@@ -125,5 +124,6 @@ export default defineComponent({
 
     return { thumbnail, thumbnailSmall, breadcrumbs };
   },
+  head: {},
 });
 </script>

@@ -27,9 +27,6 @@ const PER_PAGE = 10;
 export default defineComponent({
   name: "Index",
   components: { CategoryList, List },
-  head: {
-    title: "Blog | Omegion",
-  },
   setup() {
     const { $content, $config, error } = useContext();
     const route = useRoute();
@@ -96,6 +93,9 @@ export default defineComponent({
     });
 
     return { articles, perPage, loadMore };
+  },
+  head: {
+    title: "Blog | Omegion",
   },
 });
 </script>

@@ -21,7 +21,6 @@ import Article from "~/components/Article/Article.vue";
 export default defineComponent({
   name: "Index",
   components: { Article },
-  head: {},
   setup() {
     const route = useRoute();
     const { $content, error } = useContext();
@@ -40,5 +39,6 @@ export default defineComponent({
 
     return { article, fetchState };
   },
+  head: {},
 });
 </script>

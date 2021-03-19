@@ -5,7 +5,7 @@
     :row-class="(row, index) => currentItemSlug === row.name && 'is-selected'"
     class="repository-list"
   >
-    <b-table-column field="name" label="Name" v-slot="props">
+    <b-table-column v-slot="props" field="name" label="Name">
       <nuxt-link
         tag="div"
         class="card"

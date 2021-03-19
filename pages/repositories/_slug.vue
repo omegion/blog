@@ -23,7 +23,6 @@ import ItemPlaceholder from "~/components/Repository/ItemPlaceholder.vue";
 export default defineComponent({
   name: "Index",
   components: { ItemPlaceholder, Item },
-  head: {},
   setup() {
     const route = useRoute();
     const { error, $axios } = useContext();
@@ -49,5 +48,6 @@ export default defineComponent({
 
     return { repository, fetchState };
   },
+  head: {},
 });
 </script>

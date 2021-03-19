@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <span class="" v-for="(tag, index) in tags" :key="index">
+    <span v-for="(tag, index) in tags" :key="index" class="">
       <b-tag class="mr-2">
         <span class="is-capitalized">
           {{ tag }}
