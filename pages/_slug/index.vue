@@ -1,6 +1,10 @@
 <template>
   <div class="columns">
-    <Article v-if="article" :article="article" class="column is-8" />
+    <Article
+      v-if="!fetchState.pending"
+      :article="article"
+      class="column is-8"
+    />
   </div>
 </template>
 
@@ -23,7 +27,7 @@ export default defineComponent({
     const { $content, error } = useContext();
     const article = ref(null);
 
-    const { fetch } = useFetch(async () => {
+    const { fetch, fetchState } = useFetch(async () => {
       // @ts-ignore
       article.value = await $content("articles", route.value.params.slug)
         .fetch()
@@ -34,7 +38,7 @@ export default defineComponent({
 
     fetch();
 
-    return { article };
+    return { article, fetchState };
   },
 });
 </script>

@@ -8,6 +8,7 @@
         >
           <img
             :alt="article.title"
+            :src="thumbnail"
             :data-src="thumbnail"
             :data-loading="thumbnailSmall"
           />

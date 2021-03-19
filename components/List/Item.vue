@@ -5,6 +5,7 @@
         <figure class="image is-4by3" v-lazy-container="{ selector: 'img' }">
           <img
             :alt="article.title"
+            :src="thumbnail"
             :data-src="thumbnail"
             :data-loading="thumbnailSmall"
           />
