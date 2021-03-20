@@ -13,6 +13,7 @@ spec:
   tls:
     - hosts:
         - blog.omegion.dev
+        - preview.blog.omegion.dev
       secretName: cloudflare-tls
   rules:
     - host: blog.omegion.dev
@@ -22,6 +23,16 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: blog
+                name: blog-stable
+                port:
+                  number: 80
+    - host: preview.blog.omegion.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-preview
                 port:
                   number: 80

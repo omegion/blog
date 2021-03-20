@@ -5,8 +5,8 @@ metadata:
   labels:
     app: blog
 spec:
-  replicas: 1
-  revisionHistoryLimit: 1
+  replicas: 2
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: blog
@@ -38,10 +38,10 @@ spec:
               yarn start
           resources:
             limits:
-              cpu: 150m
-              memory: 200Mi
+              cpu: 100m
+              memory: 100Mi
             requests:
-              cpu: 80m
+              cpu: 75m
               memory: 50Mi
           ports:
             - containerPort: 80
@@ -49,9 +49,16 @@ spec:
             - name: ENVIRONMENT
               value: "production"
   strategy:
-    canary:
-      maxSurge: "10%"
-      maxUnavailable: 0
-      steps:
-        - setWeight: 10
-        - pause: { }
+    blueGreen:
+      # activeService specifies the service to update with the new template hash at time of promotion.
+      # This field is mandatory for the blueGreen update strategy.
+      activeService: blog-stable
+      # previewService specifies the service to update with the new template hash before promotion.
+      # This allows the preview stack to be reachable without serving production traffic.
+      # This field is optional.
+      previewService: blog-preview
+      # autoPromotionEnabled disables automated promotion of the new stack by pausing the rollout
+      # immediately before the promotion. If omitted, the default behavior is to promote the new
+      # stack as soon as the ReplicaSet are completely ready/available.
+      # Rollouts can be resumed using: `kubectl argo rollouts promote ROLLOUT`
+      autoPromotionEnabled: false
