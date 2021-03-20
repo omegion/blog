@@ -46,14 +46,17 @@
 import {
   computed,
   defineComponent,
+  onMounted,
   ref,
   useContext,
   useMeta,
 } from "@nuxtjs/composition-api";
+import Vue from "vue";
 import Navbar from "~/components/Navbar.vue";
 import Breadcrumb from "~/components/Breadcrumbs.vue";
 import Author from "~/components/Article/Author.vue";
 import Tags from "~/components/Article/Tags.vue";
+import CopyButton from "~/components/Article/CopyButton.vue";
 
 export default defineComponent({
   name: "Article",
@@ -120,6 +123,18 @@ export default defineComponent({
         },
         { property: "og:description", content: props.article.description },
       ],
+    });
+
+    onMounted(() => {
+      const blocks = document.getElementsByClassName("nuxt-content-highlight");
+
+      // @ts-ignore
+      for (const block of blocks) {
+        // @ts-ignore
+        const CopyButtonComponent = Vue.extend(CopyButton);
+        const component = new CopyButtonComponent().$mount();
+        block.appendChild(component.$el);
+      }
     });
 
     return { thumbnail, thumbnailSmall, breadcrumbs };

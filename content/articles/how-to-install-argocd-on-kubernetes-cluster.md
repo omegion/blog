@@ -1,5 +1,5 @@
 ---
-title: How to install ArgoCD on kubernetes cluster
+title: How to install ArgoCD on Kubernetes cluster
 description: This is an article to explain how to install ArgoCD on kubernetes cluster.
 author: hakan
 category: kubernetes

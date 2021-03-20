@@ -5,7 +5,7 @@ author: hakan
 category: kubernetes
 tags: [database,backup,postgresql,kubernetes,k8s]
 thumbnail: pexels-brett-sayles-4425157.jpg
-isPublished: false
+isPublished: true
 createdAt: 2021-02-16
 ---
 

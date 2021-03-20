@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <Article
-      v-if="!fetchState.pending"
+      v-if="!fetchState.pending && article"
       :article="article"
       class="container section column is-6"
     />
@@ -23,12 +23,19 @@ export default defineComponent({
   components: { Article },
   setup() {
     const route = useRoute();
-    const { $content, error } = useContext();
+    const { $content, $config, error } = useContext();
     const article = ref(null);
 
     const { fetch, fetchState } = useFetch(async () => {
+      const w = {};
+
+      if ($config.isProduction) {
+        Object.assign(w, { isPublished: true });
+      }
+
       // @ts-ignore
       article.value = await $content("articles", route.value.params.slug)
+        .where(w)
         .fetch()
         .catch(() => {
           error({ statusCode: 404, message: "Page not found" });

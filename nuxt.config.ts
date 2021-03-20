@@ -1,6 +1,9 @@
 import { Configuration } from "@nuxt/types";
 import getRoutes from "./utils/getRoutes";
 
+const wrap = (code: string, lang: string) =>
+  `<pre><code class="hljs ${lang}">${code}</code></pre>`;
+
 const VERSION = require("./package.json").version;
 
 const config: Configuration = {
@@ -26,7 +29,11 @@ const config: Configuration = {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["~assets/scss/app.scss", "@mdi/font/css/materialdesignicons.min.css"],
+  css: [
+    "~assets/scss/app.scss",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "highlight.js/styles/vs2015.css",
+  ],
 
   loading: {
     height: "0px",
@@ -62,10 +69,10 @@ const config: Configuration = {
   ],
 
   content: {
-    liveEdit: false,
+    liveEdit: true,
     markdown: {
       prism: {
-        theme: "prism-themes/themes/prism-material-oceanic.css",
+        theme: "prism-themes/themes/prism-dracula.css",
       },
       remarkPlugins: [
         "remark-squeeze-paragraphs",
