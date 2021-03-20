@@ -44,7 +44,7 @@
         <div class="column"></div>
         <div class="column is-10">
           <p class="has-text-centered is-size-7 is-opacity-4">
-            © Omegion {{ dateYear }}. All rights reserved.
+            © Omegion {{ dateYear }}. All rights reserved. {{ appVersion }}
             <br />
             <br />
             When you visit or interact with our sites, services or tools, we or
@@ -60,15 +60,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "@nuxtjs/composition-api";
+import { computed, defineComponent, useContext } from "@nuxtjs/composition-api";
 // @ts-ignore
 import moment from "moment";
 
 export default defineComponent({
   name: "Footer",
   setup() {
+    const { $config } = useContext();
+
     const dateYear = computed(() => moment().year());
-    return { dateYear };
+    const appVersion = computed(() => $config.appVersion);
+
+    return { dateYear, appVersion };
   },
 });
 </script>
