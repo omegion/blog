@@ -45,9 +45,6 @@ spec:
               memory: 50Mi
           ports:
             - containerPort: 80
-          env:
-            - name: ENVIRONMENT
-              value: "production"
   strategy:
     blueGreen:
       # activeService specifies the service to update with the new template hash at time of promotion.
