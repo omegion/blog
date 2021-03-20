@@ -1,7 +1,6 @@
 <template>
   <b-table
     :data="[1, 2, 3, 4, 5]"
-    :selected.sync="selected"
     :mobile-cards="false"
     class="repository-list"
   >

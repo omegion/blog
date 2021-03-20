@@ -13,6 +13,7 @@ import {
   ref,
   useContext,
   useFetch,
+  useMeta,
   useRoute,
   watch,
 } from "@nuxtjs/composition-api";
@@ -25,7 +26,7 @@ export default defineComponent({
   components: { ItemPlaceholder, Item },
   setup() {
     const route = useRoute();
-    const { error, $axios } = useContext();
+    const { error, $axios, $config } = useContext();
 
     const repository = ref(null);
 
@@ -38,6 +39,42 @@ export default defineComponent({
         .catch(() => {
           error({ statusCode: 500, message: "Could not fetch repositories." });
         });
+    });
+
+    useMeta(() => {
+      let title = `Open Source Projects - ${$config.titlePostfix}` as string;
+      let description = `Open Source Projects - ${$config.titlePostfix}` as string;
+      if (repository.value !== null) {
+        // @ts-ignore
+        title = `${repository.value.name} - ${$config.titlePostfix}`;
+        // @ts-ignore
+        description = repository.value.description;
+      }
+      return {
+        title,
+        meta: [
+          {
+            hid: "description",
+            name: "description",
+            content: description,
+          },
+          { property: "og:description", content: description },
+        ],
+      };
+    });
+
+    useMeta({
+      meta: [
+        { name: "twitter:site", content: "@omegion" },
+        { name: "twitter:creator", content: "@omegion" },
+        {
+          property: "og:site_name",
+          content: $config.titlePostfix,
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: $config.baseUrl },
+        { property: "og:locale", content: "en_US" },
+      ],
     });
 
     fetch();
