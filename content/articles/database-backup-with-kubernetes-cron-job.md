@@ -1,6 +1,5 @@
 ---
 title: Database Backup with Kubernetes Cron Job
-description: This is a tutorial how to create database backup with Kubernetes cron job.
 author: hakan
 category: kubernetes
 tags: [database,backup,postgresql,kubernetes,k8s]
@@ -9,30 +8,33 @@ isPublished: true
 createdAt: 2021-02-16
 ---
 
+This is a tutorial on how to create a database backup with Kubernetes CronJob.
+<!--more-->
+
 ## Introduction
 
-If you have self-managed database for your projects, it is hard to manage the
-backups. You can use `db-backup` tool to create backup on S3 bucket easily
+If you have a self-managed database for your projects, it is hard to manage the
+backups. You can use `db-backup` tool to create a backup on the S3 bucket easily
 within your cluster.
 
 ## Prerequisites
 
 Before you get started, you will need to have a number of things.
 
-1. Kubernetes cluster.
+1. A running Kubernetes cluster.
 1. `kubectl` installed. If not, you will need it to manage your clusters.
 1. Have a `KUBECONFIG` file (default location is ~/.kube/config).
 
 ## What is Cron Job
 
-Kubernetes CronJob is a job that repeat itself with given schedule. CronJob is a
-perfect fit for creating a database backup for your self-manage database.
+Kubernetes CronJob is a job that repeats itself with a given schedule. CronJob is a
+perfect fit for creating a database backup for your self-managed database.
 
 ## Create CronJob
 
 Let's create `backup-cronjob.yaml` with the given content.
 
-```yaml
+```yaml[backup-cronjob.yaml]
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
