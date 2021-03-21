@@ -1,7 +1,11 @@
 <template>
   <div class="columns">
+    <article-placeholder
+      v-if="fetchState.pending"
+      class="container section column is-6"
+    />
     <Article
-      v-if="!fetchState.pending && article"
+      v-else-if="article"
       :article="article"
       class="container section column is-6"
     />
@@ -17,10 +21,11 @@ import {
   useRoute,
 } from "@nuxtjs/composition-api";
 import Article from "~/components/Article/Article.vue";
+import ArticlePlaceholder from "~/components/Article/ArticlePlaceholder.vue";
 
 export default defineComponent({
   name: "Index",
-  components: { Article },
+  components: { Article, ArticlePlaceholder },
   setup() {
     const route = useRoute();
     const { $content, $config, error } = useContext();

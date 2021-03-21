@@ -70,6 +70,8 @@ const config: Configuration = {
 
   content: {
     liveEdit: true,
+    // @ts-ignore
+    editor: "~/components/Editor.vue",
     markdown: {
       prism: {
         theme: "prism-themes/themes/prism-dracula.css",

@@ -12,7 +12,7 @@
         </div>
         <div class="hero-body">
           <div class="container">
-            <div class="section pt-0">
+            <div class="section">
               <p class="title is-size-1">Open Source Projects</p>
               <p class="subtitle pt-4">
                 I like to use open source projects for most of our projects

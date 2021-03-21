@@ -25,7 +25,9 @@
                 </div>
               </div>
             </nav>
-            <p class="title is-size-2">{{ article.title }}</p>
+            <p class="title is-size-2 has-text-justified">
+              {{ article.title }}
+            </p>
             <author
               :slug="article.author"
               :created-at="article.createdAt"
@@ -49,7 +51,6 @@ import {
   onMounted,
   ref,
   useContext,
-  useMeta,
 } from "@nuxtjs/composition-api";
 import Vue from "vue";
 import Navbar from "~/components/Navbar.vue";
@@ -86,45 +87,6 @@ export default defineComponent({
       require(`@/static/public/img/${props.article.thumbnail}?lqip`)
     );
 
-    useMeta({
-      title: `${props.article.title} - ${$config.titlePostfix}`,
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: props.article.description,
-        },
-        { name: "keywords", content: props.article.tags.join(",") },
-        { name: "twitter:card", content: "summary_large_image" },
-        {
-          name: "twitter:title",
-          content: `${props.article.title} - ${$config.titlePostfix}`,
-        },
-        { name: "twitter:site", content: "@omegion" },
-        { name: "twitter:creator", content: "@omegion" },
-        {
-          name: "twitter:image",
-          content: props.article.thumbnail,
-        },
-        {
-          property: "og:title",
-          content: `${props.article.title} - ${$config.titlePostfix}`,
-        },
-        {
-          property: "og:site_name",
-          content: $config.titlePostfix,
-        },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: $config.baseUrl },
-        { property: "og:locale", content: "en_US" },
-        {
-          property: "og:image",
-          content: `${$config.baseUrl}${thumbnail.value}`,
-        },
-        { property: "og:description", content: props.article.description },
-      ],
-    });
-
     onMounted(() => {
       const blocks = document.getElementsByClassName("nuxt-content-highlight");
 
@@ -139,6 +101,5 @@ export default defineComponent({
 
     return { thumbnail, thumbnailSmall, breadcrumbs };
   },
-  head: {},
 });
 </script>

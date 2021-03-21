@@ -11,18 +11,18 @@ createdAt: 2021-02-15
 
 ## Introduction
 Kubernetes became one of the de facto standards for containerized applications. Many cloud platforms from the smallest
-to the largest like Scaleway, DigitalOcean, AWS, Google Cloud, Azure and IBM Cloud now provide managed services for
+to the largest like Scaleway, DigitalOcean, AWS, Google Cloud, Azure, and IBM Cloud now provide managed services for
 Kubernetes. Creating a cluster and deploying an application into it became so easy that it takes a couple of minutes to
 run your application on it. As these companies abstract the architecture layer from the developer that you do not need 
 to maintain a cluster anymore, deployment of the application became the new main focus. There are many open-source 
 tools that help you to deploy your application on clusters. In my opinion, one of the famous ones is Argo CD. 
-In this tutorial, we will install Argo CD on a cluster, login to UI and deploy an application with it.
+In this tutorial, we will install Argo CD on a cluster, login to UI, and deploy an application with it.
 
 ## What is Argo CD
 Argo CD is a lightweight and easy to configure declarative GitOps tool. It is built to deploy applications to
 Kubernetes. As continuous delivery (CD) has increasing popularity, Argo CD does provide many interesting
 capabilities.  Unlike other CD tools, Argo CD is lightweight and easy to configure. It is purpose-built to deploy
-applications only to Kubernetes, it's UI does not have overhead UI tools. It's also built with a GitOps flow. 
+applications only to Kubernetes, its UI does not have overhead UI tools. It's also built with a GitOps flow. 
 Meaning, everything ArgoCD sees as its source of truth is stored in a repository with multiple branches for
 different purposes such as `canary` and `production`.
 
@@ -58,7 +58,7 @@ This will create a namespace within your cluster and Argo CD services and applic
 
 By default, Argo CD API server is not exposed to external IP for security reasons. For this tutorial, we will access
 the server using port forwarding. Kubectl port-forwarding is used to connect to the API server without
-exposing the service to outside. We will use the same method for our example application.
+exposing the service to the outside. We will use the same method for our example application.
 
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -77,7 +77,7 @@ kubectl get pods -n argocd | grep argocd-server
 
 This will output Argo CD server pod details. The name of the pod is our first password for the admin user. Once you
  request to
-login, it will ask username and password. Use `admin` for username, the pod's name for the password.
+login, it will ask for username and password. Use `admin` for username, the pod's name for the password.
 
 ```bash
 argocd login localhost:8080
@@ -98,7 +98,7 @@ Now, let's go to [localhost:8080](http://localhost:8080) to access the UI.
 
 ### Create a Github Repository
 As we mentioned in the introduction, Argo CD follows GitOps flow. We will need a repository where we can store our
-application manifest files. Let's create a repository and put the following `deployment`, `service` and `argocd
+application manifest files. Let's create a repository and put the following `deployment`, `service`, and `argocd
  application`
 YAML files into it. For this tutorial, I used [example repository](https://github.com/omegion/echo-k8s-app/).
 
@@ -224,6 +224,6 @@ Accept-Encoding: gzip, deflate, br
 ## Conclusion
 
 In this tutorial, we installed Argo CD into our existing cluster and created a simple application. Since Argo CD
-follows GitOps flow, we needed to create a repository that Argo CD application can read the manifest files from.
+follows GitOps flow, we needed to create a repository from that the Argo CD application can read the manifest files.
 Finally, we connect to our application with port-forward through application service and test the echo server
 application.

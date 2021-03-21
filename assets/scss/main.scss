@@ -358,6 +358,13 @@ img[lazy="loading"] {
   }
 }
 
+.nuxt-content-editor {
+  textarea {
+    width: 100%;
+    padding: 1em;
+  }
+}
+
 .is-absolute {
   position: absolute !important;
 }
