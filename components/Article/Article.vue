@@ -50,7 +50,6 @@ import {
   defineComponent,
   onMounted,
   ref,
-  useContext,
 } from "@nuxtjs/composition-api";
 import Vue from "vue";
 import Navbar from "~/components/Navbar.vue";
@@ -69,7 +68,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { $config } = useContext();
     const breadcrumbs = ref([
       {
         route: { name: "index" },
