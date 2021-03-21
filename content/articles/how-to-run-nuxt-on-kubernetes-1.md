@@ -2,9 +2,9 @@
 title: How to deploy Nuxt JS on Kubernetes Cluster 1
 author: hakan
 category: kubernetes
-tags: [nuxt,vue,kubernetes,k8s]
+tags: [nuxt.js,vue,kubernetes,k8s,deployment, deploy]
 thumbnail: how-to-run-nuxt-on-kubernetes.jpg
-isPublished: false
+isPublished: true
 createdAt: 2021-03-19
 ---
 
