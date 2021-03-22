@@ -50,6 +50,8 @@ import {
   defineComponent,
   onMounted,
   ref,
+  useContext,
+  useMeta,
 } from "@nuxtjs/composition-api";
 import Vue from "vue";
 import Navbar from "~/components/Navbar.vue";
@@ -68,6 +70,8 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { $config } = useContext();
+
     const breadcrumbs = ref([
       {
         route: { name: "index" },
@@ -97,7 +101,47 @@ export default defineComponent({
       }
     });
 
+    useMeta({
+      title: `${props.article.title} - ${$config.titlePostfix}`,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: props.article.description,
+        },
+        { name: "keywords", content: props.article.tags.join(",") },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: `${props.article.title} - ${$config.titlePostfix}`,
+        },
+        { name: "twitter:site", content: "@omegion" },
+        { name: "twitter:creator", content: "@omegion" },
+        {
+          name: "twitter:image",
+          content: props.article.thumbnail,
+        },
+        {
+          property: "og:title",
+          content: `${props.article.title} - ${$config.titlePostfix}`,
+        },
+        {
+          property: "og:site_name",
+          content: $config.titlePostfix,
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: $config.baseUrl },
+        { property: "og:locale", content: "en_US" },
+        {
+          property: "og:image",
+          content: `${$config.baseUrl}${thumbnail.value}`,
+        },
+        { property: "og:description", content: props.article.description },
+      ],
+    });
+
     return { thumbnail, thumbnailSmall, breadcrumbs };
   },
+  head: {},
 });
 </script>
