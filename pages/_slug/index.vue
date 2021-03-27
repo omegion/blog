@@ -20,6 +20,8 @@ import {
   useFetch,
   useRoute,
 } from "@nuxtjs/composition-api";
+import { CounterAPI } from "counterapi";
+
 import Article from "~/components/Article/Article.vue";
 import ArticlePlaceholder from "~/components/Article/ArticlePlaceholder.vue";
 
@@ -30,6 +32,13 @@ export default defineComponent({
     const route = useRoute();
     const { $content, $config, error } = useContext();
     const article = ref(null);
+
+    const increasePageView = (pageName: string) => {
+      if (process.client && $config.isProduction) {
+        const counter = new CounterAPI();
+        counter.up(pageName, true);
+      }
+    };
 
     const { fetch, fetchState } = useFetch(async () => {
       const w = {};
@@ -45,6 +54,9 @@ export default defineComponent({
         .catch(() => {
           error({ statusCode: 404, message: "Page not found" });
         });
+
+      // @ts-ignore
+      increasePageView(article.value.title);
     });
 
     fetch();

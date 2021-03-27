@@ -38,3 +38,10 @@ Vue.filter("formatDateTime", (value: string) => {
     return moment(String(value)).format("DD MMM YYYY, hh:mm A");
   }
 });
+
+Vue.filter("readingTimeHumanize", (value: string) => {
+  if (value) {
+    const duration = moment.duration(value);
+    return duration.humanize();
+  }
+});

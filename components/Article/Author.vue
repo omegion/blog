@@ -16,8 +16,7 @@
         {{ author.name }}
       </p>
       <p class="title is-opacity-6 is-size-7">
-        {{ createdAt | formatDate }} &bull;
-        <span>{{ readingTimeHumanized }} read</span>
+        <slot />
       </p>
     </div>
   </div>
@@ -25,13 +24,11 @@
 
 <script lang="ts">
 import {
-  computed,
   defineComponent,
   ref,
   useContext,
   useFetch,
 } from "@nuxtjs/composition-api";
-import moment from "moment";
 
 export default defineComponent({
   name: "Author",
@@ -40,25 +37,12 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    createdAt: {
-      type: String,
-      required: true,
-    },
-    readingTime: {
-      type: Number,
-      required: true,
-    },
   },
   setup(props) {
     const { $content, error } = useContext();
     const author = ref("");
     const avatar = ref("");
     const avatarSmall = ref("");
-
-    const readingTimeHumanized = computed(() => {
-      const duration = moment.duration(props.readingTime);
-      return duration.humanize();
-    });
 
     const { fetch, fetchState } = useFetch(async () => {
       // @ts-ignore
@@ -75,7 +59,7 @@ export default defineComponent({
 
     fetch();
 
-    return { author, fetchState, avatar, avatarSmall, readingTimeHumanized };
+    return { author, fetchState, avatar, avatarSmall };
   },
 });
 </script>

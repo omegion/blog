@@ -28,11 +28,15 @@
             <p class="title is-size-2 has-text-justified">
               {{ article.title }}
             </p>
-            <author
-              :slug="article.author"
-              :created-at="article.createdAt"
-              :reading-time="article.readingTime"
-            />
+            <author :slug="article.author">
+              {{ article.createdAt | formatDate }} &bull;
+              <span>{{ article.readingTime | readingTimeHumanize }} read</span>
+              &bull;
+              <span>
+                {{ pageViewCount }}
+                <b-icon icon="eye" size="is-small"></b-icon>
+              </span>
+            </author>
           </div>
         </div>
       </section>
@@ -53,7 +57,10 @@ import {
   useContext,
   useMeta,
 } from "@nuxtjs/composition-api";
+
 import Vue from "vue";
+import { CounterAPI } from "counterapi";
+
 import Navbar from "~/components/Navbar.vue";
 import Breadcrumb from "~/components/Breadcrumbs.vue";
 import Author from "~/components/Article/Author.vue";
@@ -72,6 +79,8 @@ export default defineComponent({
   setup(props) {
     const { $config } = useContext();
 
+    const pageViewCount = ref(0);
+
     const breadcrumbs = ref([
       {
         route: { name: "index" },
@@ -89,6 +98,15 @@ export default defineComponent({
       require(`@/static/public/img/${props.article.thumbnail}?lqip`)
     );
 
+    const increasePageView = (pageName: string) => {
+      if (process.client) {
+        const counterAPI = new CounterAPI();
+        counterAPI.get(pageName, true).then((counter) => {
+          pageViewCount.value = counter.Count;
+        });
+      }
+    };
+
     onMounted(() => {
       const blocks = document.getElementsByClassName("nuxt-content-highlight");
 
@@ -99,6 +117,8 @@ export default defineComponent({
         const component = new CopyButtonComponent().$mount();
         block.appendChild(component.$el);
       }
+
+      increasePageView(props.article.title);
     });
 
     useMeta({
@@ -140,7 +160,7 @@ export default defineComponent({
       ],
     });
 
-    return { thumbnail, thumbnailSmall, breadcrumbs };
+    return { thumbnail, thumbnailSmall, breadcrumbs, pageViewCount };
   },
   head: {},
 });
