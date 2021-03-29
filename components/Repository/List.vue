@@ -9,7 +9,13 @@
       <nuxt-link
         tag="div"
         class="card"
-        :to="{ name: 'repositories-slug', params: { slug: props.row.name } }"
+        :to="{
+          name: 'repositories-slug',
+          params: { slug: props.row.name },
+          query: {
+            owner: props.row.owner.login,
+          },
+        }"
       >
         <div class="card-content">
           <div class="media">

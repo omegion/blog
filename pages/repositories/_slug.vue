@@ -2,7 +2,7 @@
   <div class="card repository-details">
     <div class="card-content">
       <item-placeholder v-if="fetchState.pending" />
-      <item v-else :repository="repository" />
+      <item v-else-if="repository" :repository="repository" />
     </div>
   </div>
 </template>
@@ -32,7 +32,9 @@ export default defineComponent({
 
     const { fetch, fetchState } = useFetch(async () => {
       await $axios
-        .$get(`/api/repositories?repo=${route.value.params.slug}`)
+        .$get(
+          `/api/repositories?repo=${route.value.params.slug}&owner=${route.value.query.owner}`
+        )
         .then((data) => {
           repository.value = data;
         })

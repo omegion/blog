@@ -1,9 +1,10 @@
 export default class Query {
-  static getRepositories(username: string) {
+  static getRepositories() {
     return `
       {
         search(type: REPOSITORY, query: """
-        user:${username}
+        user:omegion
+        user:counterapi
         is:public
         sort:stars
         """, last: 100) {
@@ -23,6 +24,9 @@ export default class Query {
               latestRelease {
                 name
                 tagName
+              }
+              owner {
+                login
               }
             }
           }
@@ -71,6 +75,9 @@ export default class Query {
             name
             tagName
             url
+          }
+          owner {
+            login
           }
         }
       }

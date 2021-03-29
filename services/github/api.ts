@@ -20,13 +20,13 @@ export default class Api {
   }
 
   async getRepositories() {
-    const query = Query.getRepositories("omegion");
+    const query = Query.getRepositories();
     // @ts-ignore
     return await this.graphql(query);
   }
 
-  async getRepository(name: string) {
-    const query = Query.getRepository("omegion", name);
+  async getRepository(owner: string, name: string) {
+    const query = Query.getRepository(owner, name);
     // @ts-ignore
     return await this.graphql(query);
   }

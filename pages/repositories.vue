@@ -79,6 +79,7 @@ export default defineComponent({
           router.push({
             name: "repositories-slug",
             params: { slug: data[0].name },
+            query: { owner: data[0].owner.login },
           });
         })
         .catch(() => {
