@@ -29,9 +29,9 @@ spec:
         - name: registry-secret
       containers:
         - name: blog
-          image: ghcr.io/omegion/blog:v1.11.0
+          image: ghcr.io/omegion/blog:v1.12.0
           imagePullPolicy: Always
-          command: [ "/bin/bash", "-c" ]
+          command: ["/bin/bash", "-c"]
           args:
             - >-
               source /vault/secrets/github; yarn start
