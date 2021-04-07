@@ -3,7 +3,7 @@ title: How to automatically unseal Vault Server for free
 description: Deploy your CronJob with Helm to unseal your Vault server for free with Kubernetes.
 author: hakan
 category: kubernetes
-tags: [vault,server,cronjob,cron,helm,chart,kubernetes,k8s]
+tags: [vault,HashiCorp,server,cronjob,cron,helm,chart,kubernetes,k8s]
 thumbnail: 3828944.jpg
 isPublished: true
 createdAt: 2021-04-07
