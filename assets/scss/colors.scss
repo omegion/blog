@@ -1,8 +1,9 @@
 // Set your colors
 $primary: rgb(55, 85, 190);
-$primary-light: rgb(243, 245, 251);
-$primary-dark: rgb(27, 31, 59);
 $primary-invert: findColorInvert($primary);
+$primary-light: rgb(243, 245, 251);
+$primary-light-invert: findColorInvert($primary-light);
+$primary-dark: rgb(27, 31, 59);
 
 $secondary: rgb(255, 142, 136);
 $secondary-light: rgba(255, 142, 136, 0.2);
@@ -46,7 +47,9 @@ $colors: mergeColorMaps(
     ),
     "primary-light": (
       $primary-light,
-      $white,
+      $primary-light-invert,
+      $primary-dark,
+      $primary-dark,
     ),
     "secondary": (
       $secondary,

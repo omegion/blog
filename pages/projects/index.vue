@@ -1,12 +1,12 @@
 <template>
   <section>
     <portal to="hero">
-      <section class="hero is-primary-dark">
+      <section class="hero is-primary-light">
         <div class="hero-head">
-          <navbar shadow />
+          <navbar type="is-primary-light" shadow />
           <div class="container">
             <div class="section py-5">
-              <breadcrumbs :items="breadcrumbs" type="is-white" />
+              <breadcrumbs :items="breadcrumbs" type="is-primary" />
             </div>
           </div>
         </div>
@@ -15,10 +15,10 @@
             <div class="section">
               <div class="columns">
                 <div class="column is-6">
-                  <p class="title is-size-1">Open Source Projects</p>
+                  <p class="title is-size-1 has-text-black">Projects</p>
                   <p class="subtitle pt-4">
-                    I like to use open source projects for most of our projects
-                    and love to contribute to the open source community.
+                    List of public projects that I started.Some of them is not
+                    maintained at the moment.
                   </p>
                 </div>
               </div>
@@ -29,15 +29,12 @@
     </portal>
     <section class="container section is-small pl-0">
       <div class="columns">
-        <div class="column is-8">
-          <list-placeholder v-if="fetchState.pending" />
-          <list v-else :repositories="repositories" />
-        </div>
-        <div class="column is-4 pl-0">
-          <NuxtChild />
+        <div class="column is-12">
+          <List v-if="projects" :projects="projects" />
         </div>
       </div>
     </section>
+    <NuxtChild />
   </section>
 </template>
 
@@ -48,19 +45,22 @@ import {
   useContext,
   useFetch,
   useMeta,
-  useRouter,
 } from "@nuxtjs/composition-api";
 import Navbar from "~/components/Navbar.vue";
-import List from "~/components/Repository/List.vue";
+import List from "~/components/Project/List.vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
-import ListPlaceholder from "~/components/Repository/ListPlaceholder.vue";
+
+const PER_PAGE = 10;
 
 export default defineComponent({
   name: "Index",
-  components: { ListPlaceholder, Navbar, List, Breadcrumbs },
+  components: { Navbar, List, Breadcrumbs },
   setup() {
-    const { $config, error, $axios } = useContext();
-    const router = useRouter();
+    const projects = ref(null);
+    const perPage = ref(PER_PAGE);
+    const currentPage = ref(1);
+
+    const { $config, $content, error } = useContext();
 
     const repositories = ref(null);
     const breadcrumbs = ref([
@@ -70,28 +70,32 @@ export default defineComponent({
       },
       {
         route: {},
-        name: "Open Source",
+        name: "Projects",
       },
     ]);
 
-    const { fetch, fetchState } = useFetch(async () => {
-      await $axios
-        .$get("/api/repositories")
-        .then((data) => {
-          repositories.value = data;
-          router.push({
-            name: "repositories.slug",
-            params: { slug: data[0].name },
-            query: { owner: data[0].owner.login },
-          });
-        })
+    const { fetch } = useFetch(async () => {
+      const w = {};
+      const q = $content("projects")
+        .limit(currentPage.value * perPage.value)
+        .sortBy("isMaintained", "desc")
+        .sortBy("createdAt", "desc");
+
+      if ($config.isProduction) {
+        Object.assign(w, { isPublished: true });
+      }
+
+      // @ts-ignore
+      projects.value = await q
+        .where(w)
+        .fetch()
         .catch(() => {
-          error({ statusCode: 500, message: "Could not fetch repositories." });
+          error({ statusCode: 404, message: "Page not found" });
         });
     });
 
     useMeta({
-      title: `Open Source Projects - ${$config.titlePostfix}`,
+      title: `Projects - ${$config.titlePostfix}`,
       meta: [
         {
           hid: "description",
@@ -113,7 +117,7 @@ export default defineComponent({
 
     fetch();
 
-    return { repositories, breadcrumbs, fetchState };
+    return { repositories, breadcrumbs, projects };
   },
   head: {
     title: "Blog | Omegion",

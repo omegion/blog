@@ -25,6 +25,14 @@
           <p class="pb-2">
             <nuxt-link
               tag="a"
+              :to="{ name: 'projects' }"
+              class="has-text-grey-light has-text-hover-white"
+              >Projects
+            </nuxt-link>
+          </p>
+          <p class="pb-2">
+            <nuxt-link
+              tag="a"
               :to="{ name: 'repositories' }"
               class="has-text-grey-light has-text-hover-white"
               >Open Source

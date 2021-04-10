@@ -39,6 +39,10 @@ const config: Configuration = {
     height: "0px",
   },
 
+  router: {
+    routeNameSplitter: ".",
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { ssr: true, src: "@/plugins/buefy.ts" },

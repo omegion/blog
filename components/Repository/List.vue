@@ -10,7 +10,7 @@
         tag="div"
         class="card"
         :to="{
-          name: 'repositories-slug',
+          name: 'repositories.slug',
           params: { slug: props.row.name },
           query: {
             owner: props.row.owner.login,

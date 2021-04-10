@@ -33,6 +33,12 @@ Vue.filter("formatDateMonthYear", (value: string) => {
   }
 });
 
+Vue.filter("formatDateMonthYearShort", (value: string) => {
+  if (value) {
+    return moment(String(value)).format("MMM YYYY");
+  }
+});
+
 Vue.filter("formatDateTime", (value: string) => {
   if (value) {
     return moment(String(value)).format("DD MMM YYYY, hh:mm A");

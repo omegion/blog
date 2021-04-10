@@ -17,6 +17,7 @@ import {
   useFetch,
   useMeta,
   useRoute,
+  useRouter,
   watch,
 } from "@nuxtjs/composition-api";
 import List from "~/components/List/List.vue";
@@ -30,6 +31,7 @@ export default defineComponent({
   setup() {
     const { $content, $config, error } = useContext();
     const route = useRoute();
+    const router = useRouter();
 
     const articles = ref(null);
     const perPage = ref(PER_PAGE);
