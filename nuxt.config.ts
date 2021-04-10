@@ -146,7 +146,7 @@ const config: Configuration = {
       id: process.env.GOOGLE_ANALYTICS_ID,
     },
     githubClientId: process.env.GITHUB_CLIENT_ID,
-    githubClientSecret: process.env.GITHUB_CLIENT_ID,
+    githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
   },
   sitemap: {
     hostname: process.env.BASE_URL,
