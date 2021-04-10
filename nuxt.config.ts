@@ -30,7 +30,6 @@ const config: Configuration = {
     "~assets/scss/app.scss",
     "@mdi/font/css/materialdesignicons.min.css",
     "highlight.js/styles/vs2015.css",
-    { src: "~assets/styl/vssue.styl", lang: "styl" },
   ],
 
   loading: {
@@ -46,7 +45,7 @@ const config: Configuration = {
     { ssr: true, src: "@/plugins/buefy.ts" },
     { ssr: true, src: "@/plugins/filters.ts" },
     { ssr: true, src: "@/plugins/vue-lazyload.ts" },
-    { ssr: false, src: "@/plugins/vssue.ts" },
+    { ssr: true, src: "@/plugins/vssue.ts" },
     { ssr: false, src: "@/plugins/vue-masonry.ts" },
     { ssr: false, src: "@/plugins/vue-aos.js" },
   ],

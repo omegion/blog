@@ -1,0 +1,85 @@
+@import "~vssue/dist/vssue";
+
+.vssue {
+  padding: 0;
+  color: $text;
+
+  .vssue-header,
+  .vssue-new-comment {
+    border-bottom: 2px solid #f5f5f5;
+
+    .vssue-header-powered-by {
+      display: none;
+    }
+
+    .vssue-new-comment-input {
+      background-color: $white;
+      border: 1px solid $border;
+      transition: box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 1px 1px $primary;
+      }
+    }
+  }
+
+  .vssue-body {
+    .vssue-comment-avatar {
+      img {
+        border-radius: 100%;
+      }
+    }
+
+    .vssue-status {
+      color: $text !important;
+    }
+  }
+
+  .vssue-button {
+    font-weight: inherit;
+    border-radius: 0.5em;
+    background-color: white;
+    border-color: $primary !important;
+    border-width: 1px;
+    justify-content: center;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(0.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    color: $primary !important;
+  }
+
+  .vssue-pagination {
+    .vssue-pagination-select {
+      background-color: white;
+      border-radius: $radius;
+      color: #363636;
+      -webkit-appearance: none;
+      align-items: center;
+      border: 1px solid #dbdbdb;
+      box-shadow: none;
+      display: inline-flex;
+      justify-content: flex-start;
+      line-height: 1.5;
+      position: relative;
+      vertical-align: top;
+      padding: calc(0.5em - 1px) 2.5em calc(0.5em - 1px) calc(0.75em - 1px);
+    }
+  }
+
+  .vssue-icon {
+    vertical-align: 0.3em;
+    fill: rgba($text, 0.5);
+  }
+
+  .vssue-comment-reaction-number {
+    color: rgba($text, 0.5);
+  }
+
+  a {
+    color: $text !important;
+  }
+}
