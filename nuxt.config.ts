@@ -60,7 +60,6 @@ const config: Configuration = {
     "@nuxtjs/eslint-module",
     "@nuxtjs/composition-api",
     "@nuxtjs/google-analytics",
-    "@nuxtjs/style-resources",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
