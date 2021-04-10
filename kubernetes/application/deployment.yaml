@@ -24,6 +24,12 @@ spec:
           {{ with secret "github/token" -}}
             export GITHUB_TOKEN="{{ .Data.data.repo_read_only }}"
           {{- end }}
+        vault.hashicorp.com/agent-inject-secret-github-oauth: "github/oauth/blog"
+        vault.hashicorp.com/agent-inject-template-github-oauth: |
+          {{ with secret "github/oauth/blog" -}}
+            export GITHUB_CLIENT_ID="{{ .Data.data.client_id }}"
+            export GITHUB_CLIENT_SECRET="{{ .Data.data.secret_id }}"
+          {{- end }}
     spec:
       serviceAccountName: vault-auth
       imagePullSecrets:
@@ -32,10 +38,10 @@ spec:
         - name: blog
           image: ghcr.io/omegion/blog:v1.19.0
           imagePullPolicy: Always
-          command: ["/bin/bash", "-c"]
+          command: [ "/bin/bash", "-c" ]
           args:
             - >-
-              source /vault/secrets/github; yarn start
+              source /vault/secrets/github;source /vault/secrets/github-oauth; yarn start
           resources:
             limits:
               cpu: 200m

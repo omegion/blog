@@ -1,9 +1,6 @@
 import { Configuration } from "@nuxt/types";
 import getRoutes from "./utils/getRoutes";
 
-const wrap = (code: string, lang: string) =>
-  `<pre><code class="hljs ${lang}">${code}</code></pre>`;
-
 const VERSION = require("./package.json").version;
 
 const config: Configuration = {
@@ -33,6 +30,7 @@ const config: Configuration = {
     "~assets/scss/app.scss",
     "@mdi/font/css/materialdesignicons.min.css",
     "highlight.js/styles/vs2015.css",
+    { src: "~assets/styl/vssue.styl", lang: "styl" },
   ],
 
   loading: {
@@ -48,6 +46,7 @@ const config: Configuration = {
     { ssr: true, src: "@/plugins/buefy.ts" },
     { ssr: true, src: "@/plugins/filters.ts" },
     { ssr: true, src: "@/plugins/vue-lazyload.ts" },
+    { ssr: false, src: "@/plugins/vssue.ts" },
     { ssr: false, src: "@/plugins/vue-masonry.ts" },
     { ssr: false, src: "@/plugins/vue-aos.js" },
   ],
@@ -58,8 +57,10 @@ const config: Configuration = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     "@nuxt/typescript-build",
+    "@nuxtjs/eslint-module",
     "@nuxtjs/composition-api",
     "@nuxtjs/google-analytics",
+    "@nuxtjs/style-resources",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -125,6 +126,7 @@ const config: Configuration = {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     publicPath: process.env.NODE_ENV === "production" ? "/public/" : "/_nuxt/",
+    cssSourceMap: false,
     html: {
       minify: {
         minifyCSS: true,
@@ -145,6 +147,8 @@ const config: Configuration = {
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID,
     },
+    githubClientId: process.env.GITHUB_CLIENT_ID,
+    githubClientSecret: process.env.GITHUB_CLIENT_ID,
   },
   sitemap: {
     hostname: process.env.BASE_URL,
@@ -161,6 +165,9 @@ const config: Configuration = {
   },
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID,
+  },
+  eslint: {
+    exclude: ["node_modules", "~assets/styl/vssue.styl"],
   },
 };
 

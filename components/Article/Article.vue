@@ -44,7 +44,9 @@
     <div class="article-body pt-6 content has-text-justified">
       <nuxt-content :document="article" />
     </div>
-    <tags v-if="article.tags" :tags="article.tags" class="pt-3" />
+    <tags v-if="article.tags" :tags="article.tags" class="pt-3 pb-3" />
+    <hr />
+    <Vssue v-if="article.tags" :title="article.title" />
   </section>
 </template>
 
@@ -154,7 +156,12 @@ export default defineComponent({
       ],
     });
 
-    return { thumbnail, thumbnailSmall, breadcrumbs, pageViewCount };
+    return {
+      thumbnail,
+      thumbnailSmall,
+      breadcrumbs,
+      pageViewCount,
+    };
   },
   head: {},
 });
