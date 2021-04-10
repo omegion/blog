@@ -13,9 +13,9 @@
 </template>
 
 <script lang="ts">
+import { ref } from "@vue/composition-api";
 import {
   defineComponent,
-  ref,
   useContext,
   useFetch,
   useRoute,
@@ -30,6 +30,7 @@ export default defineComponent({
   components: { Article, ArticlePlaceholder },
   setup() {
     const route = useRoute();
+    // @ts-ignore
     const { $content, $config, error } = useContext();
     const article = ref(null);
 

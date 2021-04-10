@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts">
+import { ref } from "@vue/composition-api";
 import {
   defineComponent,
-  ref,
   useContext,
   useFetch,
   useMeta,

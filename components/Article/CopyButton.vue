@@ -5,14 +5,13 @@
 </template>
 
 <script lang="ts">
-import Clipboard from "clipboard";
-
 import {
   computed,
   defineComponent,
   onMounted,
   ref,
-} from "@nuxtjs/composition-api";
+} from "@vue/composition-api";
+import Clipboard from "clipboard";
 
 export default defineComponent({
   name: "CopyButton",

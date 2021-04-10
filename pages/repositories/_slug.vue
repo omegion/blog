@@ -8,14 +8,12 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref, watch } from "@vue/composition-api";
 import {
-  defineComponent,
-  ref,
   useContext,
   useFetch,
   useMeta,
   useRoute,
-  watch,
 } from "@nuxtjs/composition-api";
 
 import Item from "~/components/Repository/Item.vue";

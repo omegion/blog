@@ -68,8 +68,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, useContext } from "@nuxtjs/composition-api";
-// @ts-ignore
+import { computed, defineComponent } from "@vue/composition-api";
+import { useContext } from "@nuxtjs/composition-api";
 import moment from "moment";
 
 export default defineComponent({

@@ -38,12 +38,8 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  useRoute,
-  useRouter,
-} from "@nuxtjs/composition-api";
+import { computed, defineComponent } from "@vue/composition-api";
+import { useRoute, useRouter } from "@nuxtjs/composition-api";
 import Item from "~/components/List/Item.vue";
 import LinkItem from "~/components/List/LinkItem.vue";
 

@@ -22,18 +22,15 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  useContext,
-  useFetch,
-} from "@nuxtjs/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
+import { useContext, useFetch } from "@nuxtjs/composition-api";
 import CategoryItem from "~/components/Category/Item.vue";
 
 export default defineComponent({
   name: "CategoryList",
   components: { CategoryItem },
   setup() {
+    // @ts-ignore
     const { $content } = useContext();
     const currentCarousel = ref(0);
     const categories = ref([]);

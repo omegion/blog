@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@nuxtjs/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import Navbar from "~/components/Navbar.vue";
 import AuthorPlaceholder from "~/components/Article/AuthorPlaceholder.vue";
 

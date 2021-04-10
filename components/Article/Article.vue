@@ -54,9 +54,8 @@ import {
   defineComponent,
   onMounted,
   ref,
-  useContext,
-  useMeta,
-} from "@nuxtjs/composition-api";
+} from "@vue/composition-api";
+import { useContext, useMeta } from "@nuxtjs/composition-api";
 
 import Vue from "vue";
 import { CounterAPI } from "counterapi";

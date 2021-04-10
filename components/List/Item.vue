@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "@nuxtjs/composition-api";
+import { computed, defineComponent } from "@vue/composition-api";
 import Author from "~/components/List/Author.vue";
 
 export default defineComponent({

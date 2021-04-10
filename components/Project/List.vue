@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent } from "@vue/composition-api";
 import Item from "~/components/Project/Item.vue";
 
 export default defineComponent({

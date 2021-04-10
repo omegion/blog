@@ -27,13 +27,8 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  useContext,
-  useFetch,
-  useRoute,
-} from "@nuxtjs/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
+import { useContext, useFetch, useRoute } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "CategoryItem",
@@ -45,6 +40,7 @@ export default defineComponent({
   },
   setup(props) {
     const route = useRoute();
+    // @ts-ignore
     const { $content, $config } = useContext();
     const articleCount = ref(0);
 

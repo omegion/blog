@@ -75,7 +75,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, useRoute } from "@nuxtjs/composition-api";
+import { computed, defineComponent } from "@vue/composition-api";
+import { useRoute } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "List",

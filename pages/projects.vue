@@ -39,9 +39,9 @@
 </template>
 
 <script lang="ts">
+import { ref } from "@vue/composition-api";
 import {
   defineComponent,
-  ref,
   useContext,
   useFetch,
   useMeta,
@@ -60,6 +60,7 @@ export default defineComponent({
     const perPage = ref(PER_PAGE);
     const currentPage = ref(1);
 
+    // @ts-ignore
     const { $config, $content, error } = useContext();
 
     const repositories = ref(null);

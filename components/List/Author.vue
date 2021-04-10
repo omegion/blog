@@ -20,12 +20,8 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  useContext,
-  useFetch,
-} from "@nuxtjs/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
+import { useContext, useFetch } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "Author",
@@ -36,6 +32,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    // @ts-ignore
     const { $content, error } = useContext();
     const author = ref("");
     const avatar = ref("");

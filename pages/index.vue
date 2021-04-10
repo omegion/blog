@@ -9,15 +9,13 @@
 </template>
 
 <script lang="ts">
+import { computed, ref, watch } from "@vue/composition-api";
 import {
-  computed,
   defineComponent,
-  ref,
   useContext,
   useFetch,
   useMeta,
   useRoute,
-  watch,
 } from "@nuxtjs/composition-api";
 import List from "~/components/List/List.vue";
 import CategoryList from "~/components/Category/List.vue";
@@ -28,6 +26,7 @@ export default defineComponent({
   name: "Index",
   components: { CategoryList, List },
   setup() {
+    // @ts-ignore
     const { $content, $config, error } = useContext();
     const route = useRoute();
 
