@@ -77,6 +77,23 @@
     color: rgba($text, 0.5);
   }
 
+  .vssue-comments {
+    .vssue-comment {
+      &.vssue-comment-edit-mode {
+        .vssue-comment-main {
+          border-color: $border;
+          box-shadow: 0 0 1px 1px $primary;
+        }
+      }
+
+      .vssue-comment-footer {
+        .vssue-comment-operations {
+          color: $primary;
+        }
+      }
+    }
+  }
+
   a {
     color: $text !important;
   }

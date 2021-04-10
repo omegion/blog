@@ -27,8 +27,8 @@ const config: Configuration = {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    { src: "vssue/dist/vssue.css", lang: "css" },
     "~assets/scss/app.scss",
-    "vssue/dist/vssue.css",
     "@mdi/font/css/materialdesignicons.min.css",
     "highlight.js/styles/vs2015.css",
   ],
@@ -47,7 +47,7 @@ const config: Configuration = {
     { ssr: true, src: "@/plugins/filters.ts" },
     { ssr: true, src: "@/plugins/vue-lazyload.ts" },
     {
-      ssr: process.env.NODE_ENV === "production",
+      ssr: true,
       src: "@/plugins/vssue.ts",
     },
     { ssr: false, src: "@/plugins/vue-masonry.ts" },
@@ -135,6 +135,7 @@ const config: Configuration = {
         minifyJS: true,
       },
     },
+    transpile: ["vssue"],
   },
 
   axios: {

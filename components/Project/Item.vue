@@ -21,7 +21,7 @@
             <b-icon
               v-else-if="project.icon"
               :icon="project.icon"
-              size="is-medium"
+              size="is-medium is-circled"
             ></b-icon>
             <b-icon v-else icon="github" size="is-medium"></b-icon>
           </div>
@@ -33,6 +33,10 @@
                 class="is-size-7 has-text-primary has-text-weight-semibold is-capitalized"
               >
                 {{ project.category }}
+              </span>
+              <span
+                class="is-size-7 has-text-primary has-text-weight-semibold is-capitalized"
+              >
               </span>
             </p>
             <p class="is-size-4 has-text-weight-semibold">{{ project.name }}</p>
