@@ -81,10 +81,6 @@ export default defineComponent({
         .sortBy("isMaintained", "desc")
         .sortBy("createdAt", "desc");
 
-      if ($config.isProduction) {
-        Object.assign(w, { isPublished: true });
-      }
-
       // @ts-ignore
       projects.value = await q
         .where(w)
