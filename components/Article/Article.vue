@@ -49,13 +49,8 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  ref,
-} from "@vue/composition-api";
-import { useContext, useMeta } from "@nuxtjs/composition-api";
+import { computed, onMounted, ref } from "@vue/composition-api";
+import { defineComponent, useContext, useMeta } from "@nuxtjs/composition-api";
 
 import Vue from "vue";
 import { CounterAPI } from "counterapi";
