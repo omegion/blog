@@ -1,10 +1,12 @@
 import { ServerMiddleware } from "@nuxt/types";
 import { NuxtOptionsServerMiddleware } from "@nuxt/types/config/server-middleware";
 
+// const TRUSTED_DOMAINS = ["localhost", "omegion.dev", "preview.omegion.dev"];
+
 const handler: ServerMiddleware = function (req, res) {
   const data = {
-    host: req.headers.host,
-    env: process.env,
+    headers: req.headers,
+    remoteAddress: req.socket.remoteAddress,
   };
   return res.end(JSON.stringify(data));
 };
