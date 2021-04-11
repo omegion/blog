@@ -88,14 +88,6 @@ export default defineComponent({
         .catch(() => {
           error({ statusCode: 500, message: "Could not fetch repositories." });
         });
-      await $axios
-        .$get("/api/github")
-        .then((data) => {
-          console.log(data);
-        })
-        .catch(() => {
-          error({ statusCode: 500, message: "Could not fetch repositories." });
-        });
     });
 
     useMeta({

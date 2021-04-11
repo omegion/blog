@@ -123,10 +123,7 @@ const config: Configuration = {
     },
   },
 
-  serverMiddleware: [
-    "./server-middleware/repositories",
-    "./server-middleware/github",
-  ],
+  serverMiddleware: ["./server-middleware/repositories"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
