@@ -59,9 +59,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Sync ArgoCD Application
-        uses: omegion/argocd-app-actions@v0.1.0
-        with:
-          address: ${{ secrets.ARGOCD_ADDR }}
-          token: ${{ steps.secrets.outputs.ARGOCD_TOKEN }}
-          appName: "blog"
+#      - name: Sync ArgoCD Application
+#        uses: omegion/argocd-app-actions@v0.1.0
+#        with:
+#          address: ${{ secrets.ARGOCD_ADDR }}
+#          token: ${{ steps.secrets.outputs.ARGOCD_TOKEN }}
+#          appName: "blog"
