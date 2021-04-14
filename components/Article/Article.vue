@@ -45,7 +45,6 @@
       <nuxt-content :document="article" />
     </div>
     <tags v-if="article.tags" :tags="article.tags" class="pt-3 pb-6" />
-    <Vssue v-if="article.tags" :title="article.title" />
   </section>
 </template>
 
