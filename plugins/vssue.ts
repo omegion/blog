@@ -10,6 +10,7 @@ const plugin: Plugin = (context) => {
     repo: "blog",
     clientId: context.$config.githubClientId,
     clientSecret: context.$config.githubClientSecret,
+    proxy: (url) => `https://api.github.com?target=${url}`,
   });
 };
 
