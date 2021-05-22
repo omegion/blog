@@ -13,7 +13,7 @@ cut-tag:
 	git push origin $(version)
 
 .PHONY: release
-release: build-for-container
+release:
 	@echo "Releasing $(version)"
 	docker build -t blog .
 	docker tag blog:latest omegion/blog:$(version)
