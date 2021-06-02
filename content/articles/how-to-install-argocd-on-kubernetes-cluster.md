@@ -6,7 +6,7 @@ category: kubernetes
 tags: [kubernetes,argocd,argo,k8s]
 thumbnail: pexels-chanaka-906494.jpg
 isPublished: true
-createdAt: 2021-02-15
+createdAt: 2021-06-02
 ---
 
 ## Introduction
