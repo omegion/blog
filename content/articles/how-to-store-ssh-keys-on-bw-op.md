@@ -67,7 +67,6 @@ Flags:
 Use "vault-unseal [command] --help" for more information about a command.
 ```
 
-
 ## Generate Test SSH Keypair
 
 Before using your SSH keys to store in Bitwarden, let's create a dummy keypair
