@@ -1,6 +1,6 @@
 {
   "name": "SAAS",
-  "type": "is-white",
+  "type": "is-secondary",
   "icon": "monitor",
   "order": 2
 }
