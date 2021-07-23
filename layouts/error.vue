@@ -9,12 +9,13 @@
     </portal>
     <section class="section is-large">
       <h1 v-if="error.statusCode === 404" class="title">Page not found</h1>
-      <h1 v-else>An error occurred</h1>
+      <h1 v-else>An error occurred. {{ error.message }}</h1>
       <b-button
         tag="nuxt-link"
         to="/"
         type="is-secondary"
         icon-left="arrow-left"
+        class="mt-4"
         >Home page
       </b-button>
     </section>
