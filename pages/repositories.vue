@@ -85,8 +85,8 @@ export default defineComponent({
             query: { owner: data[0].owner.login },
           });
         })
-        .catch(() => {
-          error({ statusCode: 500, message: "Could not fetch repositories." });
+        .catch((err) => {
+          error({ statusCode: 500, message: err });
         });
     });
 

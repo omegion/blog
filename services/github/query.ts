@@ -2,12 +2,7 @@ export default class Query {
   static getRepositories() {
     return `
       {
-        search(type: REPOSITORY, query: """
-        user:omegion
-        user:counterapi
-        is:public
-        sort:stars
-        """, last: 100) {
+        search(type: REPOSITORY, query: "user:omegion user:counterapi is:public sort:stars", last: 100) {
           nodes {
             ... on Repository {
               id
