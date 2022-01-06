@@ -42,10 +42,11 @@ import { computed, defineComponent } from "@vue/composition-api";
 import { useRoute, useRouter } from "@nuxtjs/composition-api";
 import Item from "~/components/List/Item.vue";
 import LinkItem from "~/components/List/LinkItem.vue";
+import Navbar from "~/components/Navbar.vue";
 
 export default defineComponent({
   name: "List",
-  components: { Item, LinkItem },
+  components: { Item, LinkItem, Navbar },
   props: {
     articles: {
       type: Array,
