@@ -7,14 +7,14 @@ const { graphql } = require("@octokit/graphql");
 export default class Api {
   private readonly graphql: Octokit;
 
-  constructor() {
-    this.graphql = Api.getGraphql();
+  constructor(token: string) {
+    this.graphql = Api.getGraphql(token);
   }
 
-  private static getGraphql(): Octokit {
+  private static getGraphql(token: string): Octokit {
     return graphql.defaults({
       headers: {
-        authorization: `token ${process.env.GITHUB_TOKEN}`,
+        authorization: `token ${token}`,
       },
     });
   }

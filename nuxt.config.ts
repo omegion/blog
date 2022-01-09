@@ -1,11 +1,13 @@
 import { Configuration } from "@nuxt/types";
 import getRoutes from "./utils/getRoutes";
+import GithubApi from "./services/github/api";
+import Controller from "./services/github/controller";
 
 const VERSION = require("./package.json").version;
 
 const config: Configuration = {
   ssr: true,
-  target: "server",
+  target: "static",
 
   head: {
     title: "Blog",
@@ -34,7 +36,8 @@ const config: Configuration = {
   ],
 
   loading: {
-    height: "0px",
+    color: "#ff8e88",
+    height: "4px",
   },
 
   router: {
@@ -123,7 +126,7 @@ const config: Configuration = {
     },
   },
 
-  serverMiddleware: ["./server-middleware/repositories"],
+  serverMiddleware: ["server-middleware/repositories"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -142,6 +145,10 @@ const config: Configuration = {
     browserBaseURL: "/",
   },
 
+  env: {
+    githubToken: process.env.GITHUB_TOKEN,
+  },
+
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
     titlePostfix: process.env.TITLE_POSTFIX,
@@ -150,6 +157,7 @@ const config: Configuration = {
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID,
     },
+    githubToken: process.env.GITHUB_TOKEN,
     githubClientId: process.env.GITHUB_CLIENT_ID,
     githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
   },

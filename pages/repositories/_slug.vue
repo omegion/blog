@@ -24,21 +24,21 @@ export default defineComponent({
   components: { ItemPlaceholder, Item },
   setup() {
     const route = useRoute();
-    const { error, $axios, $config } = useContext();
+    const { $config } = useContext();
 
     const repository = ref(null);
 
     const { fetch, fetchState } = useFetch(async () => {
-      await $axios
-        .$get(
-          `/api/repositories?repo=${route.value.params.slug}&owner=${route.value.query.owner}`
-        )
-        .then((data) => {
-          repository.value = data;
-        })
-        .catch(() => {
-          error({ statusCode: 500, message: "Could not fetch repositories." });
-        });
+      // await $axios
+      //   .$get(
+      //     `/api/repositories?repo=${route.value.params.slug}&owner=${route.value.query.owner}`
+      //   )
+      //   .then((data) => {
+      //     repository.value = data;
+      //   })
+      //   .catch(() => {
+      //     error({ statusCode: 500, message: "Could not fetch repositories." });
+      //   });
     });
 
     useMeta(() => {

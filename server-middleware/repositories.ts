@@ -3,7 +3,7 @@ import { NuxtOptionsServerMiddleware } from "@nuxt/types/config/server-middlewar
 import GithubApi from "../services/github/api";
 
 const handler: ServerMiddleware = async function (req, res) {
-  const api = new GithubApi();
+  const api = new GithubApi("");
 
   let queryRepositoryName = null;
   let queryRepositoryOwner = null;

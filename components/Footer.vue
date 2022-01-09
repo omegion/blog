@@ -33,7 +33,7 @@
           <p class="pb-2">
             <nuxt-link
               tag="a"
-              :to="{ name: 'repositories' }"
+              :to="{ name: 'open-source' }"
               class="has-text-grey-light has-text-hover-white"
               >Open Source
             </nuxt-link>
