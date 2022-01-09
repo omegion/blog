@@ -35,7 +35,7 @@ jobs:
       - name: Generate
         run: |
           export GITHUB_TOKEN=${{steps.secrets.outputs.GITHUB_REGISTRY_TOKEN}}
-          yarn generate
+          yarn generate || true
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
