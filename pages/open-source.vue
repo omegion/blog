@@ -69,7 +69,7 @@ export default defineComponent({
     ]);
 
     useMeta({
-      title: `Projects - ${$config.titlePostfix}`,
+      title: `Open Source Projects - ${$config.titlePostfix}`,
       meta: [
         {
           hid: "description",
@@ -91,8 +91,8 @@ export default defineComponent({
 
     return { repositories, breadcrumbs, projects };
   },
-  async asyncData(context) {
-    const api = new GithubApi(context.env.githubToken);
+  async asyncData({ $config }) {
+    const api = new GithubApi($config.githubToken);
     const controller = new Controller(api);
 
     return await controller

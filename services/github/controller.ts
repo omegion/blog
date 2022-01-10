@@ -8,7 +8,7 @@ export default class Controller {
     this.api = api;
   }
 
-  getRepositories() {
+  getRepositories(): Promise<Array<any>> {
     const api = this.api;
     return new Promise(function (resolve, reject) {
       api

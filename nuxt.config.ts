@@ -145,21 +145,19 @@ const config: Configuration = {
     browserBaseURL: "/",
   },
 
-  env: {
-    githubToken: process.env.GITHUB_TOKEN,
-  },
-
   publicRuntimeConfig: {
-    baseUrl: process.env.BASE_URL,
-    titlePostfix: process.env.TITLE_POSTFIX,
+    baseUrl: process.env.BASE_URL || "https://omegion.dev",
+    titlePostfix: process.env.TITLE_POSTFIX || "Personal Blog | Omegion",
     isProduction: process.env.NODE_ENV === "production",
     appVersion: VERSION,
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID,
     },
-    githubToken: process.env.GITHUB_TOKEN,
     githubClientId: process.env.GITHUB_CLIENT_ID,
     githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  },
+  privateRuntimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN,
   },
   sitemap: {
     hostname: process.env.BASE_URL,
