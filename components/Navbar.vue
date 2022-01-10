@@ -18,7 +18,7 @@
       <b-navbar-item tag="nuxt-link" :to="{ name: 'projects' }">
         Projects
       </b-navbar-item>
-      <b-navbar-item tag="nuxt-link" :to="{ name: 'repositories' }">
+      <b-navbar-item tag="nuxt-link" :to="{ name: 'open-source' }">
         Open Source
       </b-navbar-item>
     </template>

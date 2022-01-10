@@ -9,60 +9,18 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watch } from "@vue/composition-api";
-import {
-  defineComponent,
-  useContext,
-  useFetch,
-  useMeta,
-  useRoute,
-} from "@nuxtjs/composition-api";
+import { defineComponent, useContext, useMeta } from "@nuxtjs/composition-api";
 import List from "~/components/List/List.vue";
 import CategoryList from "~/components/Category/List.vue";
 
-const PER_PAGE = 10;
+const PER_PAGE = 20;
 
 export default defineComponent({
   name: "Index",
   components: { CategoryList, List },
   setup() {
     // @ts-ignore
-    const { $content, $config, error } = useContext();
-    const route = useRoute();
-
-    const articles = ref(null);
-    const perPage = ref(PER_PAGE);
-    const currentPage = ref(1);
-
-    const categorySlug = computed(() => route.value.query.category);
-
-    const { fetch } = useFetch(async () => {
-      const w = {};
-      const q = $content("articles")
-        .limit(currentPage.value * perPage.value)
-        .sortBy("createdAt", "desc");
-
-      if ($config.isProduction) {
-        Object.assign(w, { isPublished: true });
-      }
-
-      if (categorySlug.value) {
-        Object.assign(w, { category: categorySlug.value });
-      }
-
-      // @ts-ignore
-      articles.value = await q
-        .where(w)
-        .fetch()
-        .catch(() => {
-          error({ statusCode: 404, message: "Page not found" });
-        });
-    });
-
-    const loadMore = () => {
-      currentPage.value = currentPage.value + 1;
-      fetch();
-    };
+    const { $config } = useContext();
 
     useMeta({
       title: `${$config.titlePostfix}`,
@@ -84,17 +42,43 @@ export default defineComponent({
         { property: "og:description", content: `${$config.titlePostfix}` },
       ],
     });
+  },
+  async asyncData({ $config, $content, query, error }) {
+    const w = {};
+    const q = $content("articles").limit(PER_PAGE).sortBy("createdAt", "desc");
 
-    fetch();
+    if ($config.isProduction) {
+      Object.assign(w, { isPublished: true });
+    }
 
-    watch(route, () => {
-      fetch();
-    });
+    Object.assign(w, { category: query.category });
 
-    return { articles, perPage, loadMore };
+    // @ts-ignore
+    const resp = await q
+      .where(w)
+      .fetch()
+      .catch(() => {
+        error({ statusCode: 404, message: "Page not found" });
+      });
+
+    return {
+      articles: resp,
+    };
+  },
+  data() {
+    return {
+      currentPage: 1,
+      articles: [],
+    };
   },
   head: {
     title: "Blog | Omegion",
+  },
+  watchQuery: ["category"],
+  methods: {
+    loadMore() {
+      this.currentPage = this.currentPage + 1;
+    },
   },
 });
 </script>
