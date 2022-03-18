@@ -33,7 +33,7 @@ RUN cd $APP_HOME && rm -rf node_modules && \
   --production=true
 
 # production stage
-FROM node:slim as production-stage
+FROM node:17.7.1-slim as production-stage
 
 ENV NODE_ENV=production
 ENV APP_HOME=/usr/src/app
